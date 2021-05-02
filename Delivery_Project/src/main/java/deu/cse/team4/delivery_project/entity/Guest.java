@@ -14,6 +14,5 @@ public class Guest {
     Guest() {
         System.out.println("Hello World");
 
-
     }
 }
