@@ -14,5 +14,6 @@ public class Guest {
     Guest() {
         System.out.println("Hello World");
         System.out.println("KMS");
+        int a;
     }
 }
