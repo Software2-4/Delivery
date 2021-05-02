@@ -10,5 +10,10 @@ package deu.cse.team4.delivery_project.entity;
  * @author tlatl
  */
 public class Guest {
-    
+
+    Guest() {
+        System.out.println("Hello World");
+
+
+    }
 }
