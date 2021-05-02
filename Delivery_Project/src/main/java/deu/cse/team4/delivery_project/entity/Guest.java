@@ -15,5 +15,7 @@ public class Guest {
         System.out.println("Hello World");
         System.out.println("KMS");
         System.out.println("hard");
+        String a = "asdf";
+        System.out.println(a);
     }
 }
