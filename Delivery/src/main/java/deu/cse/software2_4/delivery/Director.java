@@ -19,9 +19,12 @@ public class Director {
     public void build() {
         builder.createUser();
         builder.buildName();
-        builder.buildPhone();
         builder.buildID();
         builder.buildPW();
+        builder.buildResidentnum();
+        builder.buildPhone();
+        builder.buildAddress();
+        builder.buildOnernum();
     }
 
     public User getUser() {

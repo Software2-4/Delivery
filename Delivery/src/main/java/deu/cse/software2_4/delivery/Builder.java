@@ -10,8 +10,8 @@ package deu.cse.software2_4.delivery;
  * @author tlatl
  */
 public abstract class Builder {
-        protected User user;
-
+    protected User user;
+    
     public void createUser() {
         user = new User();
     }
@@ -23,6 +23,12 @@ public abstract class Builder {
     public abstract void buildPW();
 
     public abstract void buildPhone();
+
+    public abstract void buildResidentnum();
+
+    public abstract void buildAddress();
+
+    public abstract void buildOnernum();
 
     public abstract User getUser();
 }

@@ -5,39 +5,65 @@
  */
 package deu.cse.software2_4.delivery;
 
-import java.util.Scanner;
-
 
 /**
  *
  * @author tlatl
  */
 public class UserBuilder extends Builder {
-    Scanner scan = new Scanner(System.in);
-    String str = scan.nextLine();
     
-    String arr[] = str.split(" ");
+    private String name;
+    private String id;
+    private String pw;
+    private String residentnum;
+    private String phone;
+    private String address;
+    private String onernum;
     
+    public UserBuilder(String name, String id, String pw, String residentnum, String phone, String address, String onernum ){
+        this.name = name;
+        this.id = id;
+        this.pw = pw;
+        this.residentnum = residentnum;
+        this.phone = phone;
+        this.address = address;
+        this.onernum = onernum;
+    }
      @Override
     public void buildName() {
-        user.setName(arr[0]);
+        user.setName(name);
     }
 
     @Override
     public void buildID() {
-        user.setID(arr[1]);
+        user.setID(id);
     }
 
     @Override
     public void buildPW() {
-        user.setPW(arr[2]);
+        user.setPW(pw);
     }
 
     @Override
+    public void buildResidentnum() {
+        user.setResidentnum(residentnum);
+    }
+    
+    @Override
     public void buildPhone() {
-        user.setPhone(arr[3]);
+        user.setPhone(phone);
     }
 
+    @Override
+    public void buildAddress() {
+        user.setAddress(address);
+    }
+    
+    @Override
+    public void buildOnernum() {
+        user.setOnernum(onernum);
+    }
+    
     @Override
     public User getUser() {
         return user;
