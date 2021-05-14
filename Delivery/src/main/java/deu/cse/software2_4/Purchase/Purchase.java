@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.Purchase;
 
+import deu.cse.software2_4.UserLogin.UserloginModel;
 import javax.swing.ButtonGroup;
 
 /**
  *
  * @author KMS
  */
-public class purchase extends javax.swing.JFrame {
+public class Purchase extends javax.swing.JFrame {
     
         ButtonGroup purchase_option = new ButtonGroup();
-        
+        String option;
     /**
      * Creates new form purchase
      */
-    public purchase() {
+    public Purchase() {
         initComponents();
         setSize(420, 600);
         setLocationRelativeTo(null);
@@ -143,14 +144,11 @@ public class purchase extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-        setVisible(false);
-        UserloginModel object = new UserloginModel();
-        object.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     private void payment_lastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payment_lastActionPerformed
         // TODO add your handling code here:
-        String option;
         if(cash_purchase.isSelected()){
             option = "1";
         }else{
@@ -181,20 +179,20 @@ public class purchase extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(purchase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Purchase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(purchase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Purchase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(purchase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Purchase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(purchase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Purchase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new purchase().setVisible(true);
+                new Purchase().setVisible(true);
             }
         });
     }

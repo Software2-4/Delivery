@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.UserLogin;
+
 
 /**
  *
  * @author YOU
  */
-public class Consumer_Login implements Login_strategy{
+public class Business_Login implements Login_strategy{
 
     @Override
     public void loginscreen() {
+    
+        System.out.println("Hello Business!");
         
-        System.out.println("Hello Consumer!");
-        
-        UserloginModel object = new UserloginModel();
+        OnerLoginModel object = new OnerLoginModel();
         object.setVisible(true);
     }
     

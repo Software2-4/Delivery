@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.Restaurant_Info;
+
+import deu.cse.software2_4.Purchase.Purchase;
+import deu.cse.software2_4.UserLogin.UserloginModel;
 
 
 /**
@@ -175,15 +178,13 @@ public class Chienese_restaurant_info extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-        setVisible(false);
-        UserloginModel object = new UserloginModel();
-        object.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
     setVisible(false);
-    Orderlist object = new Orderlist();
-    object.setVisible(true);        // TODO add your handling code here:
+    Purchase object = new Purchase();
+    object.setVisible(true);     // TODO add your handling code here:
     }//GEN-LAST:event_orderActionPerformed
 
     /**

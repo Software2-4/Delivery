@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.UserLogin;
 
 /**
  *
  * @author YOU
  */
-public interface Payment {
+interface Login_strategy {
     
-    void pay(int amount, String option); //결제할 가격 
+    public void loginscreen();
 }

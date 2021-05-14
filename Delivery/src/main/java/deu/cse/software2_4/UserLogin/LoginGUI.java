@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.UserLogin;
 
+import deu.cse.software2_4.SignUp.Sign;
 import javax.swing.ButtonGroup;
 
 /**
@@ -227,7 +228,7 @@ public class LoginGUI extends javax.swing.JFrame {
             
         }
 
-        setVisible(false);
+        
     }//GEN-LAST:event_jButton_loginActionPerformed
 
     private void jButton_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_exitActionPerformed

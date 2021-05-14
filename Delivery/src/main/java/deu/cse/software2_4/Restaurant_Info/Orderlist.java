@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.Restaurant_Info;
+
+import deu.cse.software2_4.UserLogin.UserloginModel;
 
 /**
  *
@@ -36,7 +38,6 @@ public class Orderlist extends javax.swing.JFrame {
         jTextField_price = new javax.swing.JTextField();
         jTextField_delivery = new javax.swing.JTextField();
         jButton_Back = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,19 +65,10 @@ public class Orderlist extends javax.swing.JFrame {
         });
 
         jButton_Back.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        jButton_Back.setIcon(new javax.swing.ImageIcon("C:\\Users\\이창희\\Desktop\\Delivert\\Delivery_Project\\project image\\logout.png")); // NOI18N
         jButton_Back.setText("뒤로 가기");
         jButton_Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_BackActionPerformed(evt);
-            }
-        });
-
-        jButton1.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        jButton1.setText("결제 하기");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -90,19 +82,17 @@ public class Orderlist extends javax.swing.JFrame {
                 .addComponent(jButton_Back))
             .addGroup(layout.createSequentialGroup()
                 .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel_delivery)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField_delivery))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel_price)
-                            .addGap(33, 33, 33)
-                            .addComponent(jTextField_price))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_delivery)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_delivery))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_price)
+                        .addGap(33, 33, 33)
+                        .addComponent(jTextField_price))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,9 +113,7 @@ public class Orderlist extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_delivery)
                     .addComponent(jTextField_delivery, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(jButton1)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,16 +123,8 @@ public class Orderlist extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_priceActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    setVisible(false);
-    purchase object = new purchase();
-    object.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-    setVisible(false);
-    UserloginModel object = new UserloginModel();
-    object.setVisible(true);        // TODO add your handling code here:
+    dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     /**
@@ -183,7 +163,6 @@ public class Orderlist extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_Back;
     private javax.swing.JLabel jLabel_Orderlist;
     private javax.swing.JLabel jLabel_delivery;

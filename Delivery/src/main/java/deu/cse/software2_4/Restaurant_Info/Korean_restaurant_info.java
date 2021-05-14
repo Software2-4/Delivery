@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.Restaurant_Info;
+
+import deu.cse.software2_4.Purchase.Purchase;
+import deu.cse.software2_4.UserLogin.UserloginModel;
 
 /**
  *
@@ -86,7 +89,6 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         select_menu_KR.setText("선택한 메뉴");
 
         jButton_Back.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        jButton_Back.setIcon(new javax.swing.ImageIcon("C:\\Users\\이창희\\Desktop\\Delivert\\Delivery_Project\\project image\\logout.png")); // NOI18N
         jButton_Back.setText("뒤로 가기");
         jButton_Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,14 +163,12 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-        setVisible(false);
-        UserloginModel object = new UserloginModel();
-        object.setVisible(true);
+    dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
     setVisible(false);
-    Orderlist object = new Orderlist();
+    Purchase object = new Purchase();
     object.setVisible(true);
     }//GEN-LAST:event_orderActionPerformed
 

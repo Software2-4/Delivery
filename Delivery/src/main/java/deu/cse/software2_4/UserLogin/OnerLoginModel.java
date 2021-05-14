@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.UserLogin;
 
 /**
  *
@@ -16,6 +16,9 @@ public class OnerLoginModel extends javax.swing.JFrame {
      */
     public OnerLoginModel() {
         initComponents();
+        
+        setSize(420, 600);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -33,6 +36,11 @@ public class OnerLoginModel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("뒤로가기");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 0, 18)); // NOI18N
         jLabel1.setText("사업자");
@@ -59,6 +67,11 @@ public class OnerLoginModel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

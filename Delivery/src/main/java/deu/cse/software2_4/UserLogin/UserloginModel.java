@@ -3,7 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.UserLogin;
+
+import deu.cse.software2_4.Restaurant_Info.Chienese_restaurant_info;
+import deu.cse.software2_4.Restaurant_Info.Japanese_restaurant_info;
+import deu.cse.software2_4.Restaurant_Info.Korean_restaurant_info;
+import deu.cse.software2_4.Restaurant_Info.Western_restaurant_info;
+import deu.cse.software2_4.Resturant_list.Menu;
+import deu.cse.software2_4.Resturant_list.ResturantComponent;
 
 
 /**
@@ -80,7 +87,6 @@ public class UserloginModel extends javax.swing.JFrame {
         });
 
         jButton_Back.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        jButton_Back.setIcon(new javax.swing.ImageIcon("C:\\Users\\이창희\\Desktop\\Delivert\\Delivery_Project\\project image\\logout.png")); // NOI18N
         jButton_Back.setText("뒤로 가기");
         jButton_Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,31 +143,29 @@ public class UserloginModel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_ChieneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ChieneseActionPerformed
-    setVisible(false);
+    
     Chienese_restaurant_info object = new Chienese_restaurant_info();
     object.setVisible(true);
     }//GEN-LAST:event_jButton_ChieneseActionPerformed
 
     private void jButton_KoreanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_KoreanActionPerformed
-    setVisible(false);
     Korean_restaurant_info object = new Korean_restaurant_info();
     object.setVisible(true);
+    
     }//GEN-LAST:event_jButton_KoreanActionPerformed
 
     private void jButton_JapaneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_JapaneseActionPerformed
-    setVisible(false);
+    
     Japanese_restaurant_info object = new Japanese_restaurant_info();
     object.setVisible(true); 
     }//GEN-LAST:event_jButton_JapaneseActionPerformed
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-    setVisible(false);
-    LoginGUI object = new LoginGUI();
-    object.setVisible(true); 
+    dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     private void jButton_WesternActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_WesternActionPerformed
-    setVisible(false);
+    
     Western_restaurant_info object = new Western_restaurant_info();
     object.setVisible(true); 
     }//GEN-LAST:event_jButton_WesternActionPerformed

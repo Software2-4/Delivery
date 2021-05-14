@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deu.cse.software2_4.delivery;
+package deu.cse.software2_4.Purchase;
+
 
 /**
  *
  * @author YOU
  */
-public class Purchase_Main {
+public class Card_Purchase implements Payment{
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    @Override
+    public void pay(int amount, String option) {
         
-        
+        System.out.println(amount + "원 카드결제 입니다.");       
         
     }
     
