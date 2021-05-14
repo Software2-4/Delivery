@@ -5,12 +5,16 @@
  */
 package deu.cse.software2_4.delivery;
 
+import javax.swing.ButtonGroup;
+
 /**
  *
  * @author KMS
  */
 public class purchase extends javax.swing.JFrame {
-
+    
+        ButtonGroup purchase_option = new ButtonGroup();
+        
     /**
      * Creates new form purchase
      */
@@ -18,6 +22,10 @@ public class purchase extends javax.swing.JFrame {
         initComponents();
         setSize(420, 600);
         setLocationRelativeTo(null);
+
+        purchase_option.add(cash_purchase);
+        purchase_option.add(card_purchase);
+        
     }
 
     /**
@@ -34,11 +42,11 @@ public class purchase extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         order_check_list = new javax.swing.JList<>();
         price_payment = new javax.swing.JLabel();
-        total_price_paymenr = new javax.swing.JTextField();
+        total_price_payment = new javax.swing.JTextField();
         payment_last = new javax.swing.JButton();
-        payment_front = new javax.swing.JButton();
-        payment_card = new javax.swing.JButton();
         jButton_Back = new javax.swing.JButton();
+        cash_purchase = new javax.swing.JRadioButton();
+        card_purchase = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,20 +69,22 @@ public class purchase extends javax.swing.JFrame {
             }
         });
 
-        payment_front.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
-        payment_front.setText("현장 결제");
-
-        payment_card.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
-        payment_card.setText("카드 결제");
-
         jButton_Back.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        jButton_Back.setIcon(new javax.swing.ImageIcon("C:\\Users\\이창희\\Desktop\\Delivert\\Delivery_Project\\project image\\logout.png")); // NOI18N
         jButton_Back.setText("뒤로 가기");
         jButton_Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_BackActionPerformed(evt);
             }
         });
+
+        cash_purchase.setText("현금 결제");
+        cash_purchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cash_purchaseActionPerformed(evt);
+            }
+        });
+
+        card_purchase.setText("카드 결제");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,23 +95,25 @@ public class purchase extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_Back))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(payment_last, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(price_payment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(total_price_payment, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(order_check, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(payment_last, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(price_payment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(total_price_paymenr, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(order_check, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(payment_front, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(payment_card, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(80, 80, 80)
+                        .addComponent(cash_purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(card_purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,12 +129,12 @@ public class purchase extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(price_payment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(total_price_paymenr, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(total_price_payment, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(payment_front)
-                    .addComponent(payment_card))
-                .addGap(19, 19, 19)
+                    .addComponent(cash_purchase)
+                    .addComponent(card_purchase))
+                .addGap(18, 18, 18)
                 .addComponent(payment_last, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 86, Short.MAX_VALUE))
         );
@@ -138,7 +150,19 @@ public class purchase extends javax.swing.JFrame {
 
     private void payment_lastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payment_lastActionPerformed
         // TODO add your handling code here:
+        String option;
+        if(cash_purchase.isSelected()){
+            option = "1";
+        }else{
+            option = "0";
+        }
+        Payment proxy = new Purchase_Proxy();
+        proxy.pay(Integer.parseInt(total_price_payment.getText()), option);
     }//GEN-LAST:event_payment_lastActionPerformed
+
+    private void cash_purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cash_purchaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cash_purchaseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,15 +200,15 @@ public class purchase extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton card_purchase;
+    private javax.swing.JRadioButton cash_purchase;
     private javax.swing.JButton jButton_Back;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel order_check;
     private javax.swing.JList<String> order_check_list;
     private javax.swing.JLabel payment;
-    private javax.swing.JButton payment_card;
-    private javax.swing.JButton payment_front;
     private javax.swing.JButton payment_last;
     private javax.swing.JLabel price_payment;
-    private javax.swing.JTextField total_price_paymenr;
+    private javax.swing.JTextField total_price_payment;
     // End of variables declaration//GEN-END:variables
 }

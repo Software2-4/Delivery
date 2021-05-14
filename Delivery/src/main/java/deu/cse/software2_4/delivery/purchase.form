@@ -28,28 +28,31 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jButton_Back" min="-2" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="payment_last" min="-2" pref="290" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="price_payment" max="32767" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="total_price_paymenr" min="-2" pref="195" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="order_check" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="286" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="payment_front" min="-2" pref="104" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="payment_card" min="-2" pref="104" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="payment_last" min="-2" pref="290" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="price_payment" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="total_price_payment" min="-2" pref="195" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="order_check" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="286" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="cash_purchase" min="-2" pref="103" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="card_purchase" min="-2" pref="103" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="45" max="32767" attributes="0"/>
@@ -70,14 +73,14 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="price_payment" alignment="0" max="32767" attributes="0"/>
-                  <Component id="total_price_paymenr" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="total_price_payment" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cash_purchase" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="card_purchase" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="payment_front" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="payment_card" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="payment_last" min="-2" pref="95" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="86" max="32767" attributes="0"/>
           </Group>
@@ -128,7 +131,7 @@
         <Property name="text" type="java.lang.String" value="&#xacb0;&#xc81c;&#xac00;&#xaca9; : "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="total_price_paymenr">
+    <Component class="javax.swing.JTextField" name="total_price_payment">
     </Component>
     <Component class="javax.swing.JButton" name="payment_last">
       <Properties>
@@ -141,22 +144,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="payment_lastActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="payment_front">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="&#xd604;&#xc7a5; &#xacb0;&#xc81c;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="payment_card">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="&#xce74;&#xb4dc; &#xacb0;&#xc81c;"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="jButton_Back">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -167,6 +154,19 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_BackActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="cash_purchase">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xd604;&#xae08; &#xacb0;&#xc81c;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cash_purchaseActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="card_purchase">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xce74;&#xb4dc; &#xacb0;&#xc81c;"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
