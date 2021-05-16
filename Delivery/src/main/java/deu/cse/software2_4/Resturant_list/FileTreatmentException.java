@@ -7,15 +7,14 @@ package deu.cse.software2_4.Resturant_list;
 
 /**
  *
- * @author tlatl
+ * @author YOU
  */
-public class Waitress {
-    ResturantComponent allResturants;
+public class FileTreatmentException extends RuntimeException {
 
-    public Waitress(ResturantComponent getAllResturants) {
-        this.allResturants = getAllResturants;
+    public FileTreatmentException() {
     }
-    public void printResturant() {
-        allResturants.print();
+
+    public FileTreatmentException(String msg) {
+        super(msg);
     }
 }

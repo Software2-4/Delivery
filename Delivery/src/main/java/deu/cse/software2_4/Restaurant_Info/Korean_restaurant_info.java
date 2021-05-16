@@ -6,14 +6,12 @@
 package deu.cse.software2_4.Restaurant_Info;
 
 import deu.cse.software2_4.Purchase.Purchase;
-import deu.cse.software2_4.UserLogin.UserloginModel;
 
 /**
  *
  * @author KMS
  */
 public class Korean_restaurant_info extends javax.swing.JFrame {
-
     /**
      * Creates new form korean_restaurant_info
      */
@@ -22,6 +20,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         setSize(420, 600);
         setLocationRelativeTo(null);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -9,8 +9,6 @@ import deu.cse.software2_4.Restaurant_Info.Chienese_restaurant_info;
 import deu.cse.software2_4.Restaurant_Info.Japanese_restaurant_info;
 import deu.cse.software2_4.Restaurant_Info.Korean_restaurant_info;
 import deu.cse.software2_4.Restaurant_Info.Western_restaurant_info;
-import deu.cse.software2_4.Resturant_list.Menu;
-import deu.cse.software2_4.Resturant_list.ResturantComponent;
 
 
 /**
@@ -18,7 +16,6 @@ import deu.cse.software2_4.Resturant_list.ResturantComponent;
  * @author 이창희
  */
 public class UserloginModel extends javax.swing.JFrame {
-
     /**
      * Creates new form UserloginModel
      */
@@ -151,7 +148,6 @@ public class UserloginModel extends javax.swing.JFrame {
     private void jButton_KoreanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_KoreanActionPerformed
     Korean_restaurant_info object = new Korean_restaurant_info();
     object.setVisible(true);
-    
     }//GEN-LAST:event_jButton_KoreanActionPerformed
 
     private void jButton_JapaneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_JapaneseActionPerformed
