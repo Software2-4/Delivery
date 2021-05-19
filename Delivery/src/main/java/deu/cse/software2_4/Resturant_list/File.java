@@ -19,14 +19,16 @@ public class File extends Entry {
         this.size = size;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public String getName() {
         return name;
     }
 
-    public int getSize() {
-        return size;
-    }
-
+    @Override
     protected void printList(String prefix) {
         System.out.println(prefix + "/" + this);
     }

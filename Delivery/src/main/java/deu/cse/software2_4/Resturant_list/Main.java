@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,32 +30,41 @@ public class Main {
             InputStreamReader reader = new InputStreamReader(input, "UTF-8");
             BufferedReader in = new BufferedReader(reader);
 
-            FileInputStream menuF = new FileInputStream("C:\\DB\\Resturant.txt");
-            InputStreamReader menu_reader = new InputStreamReader(input, "UTF-8");
-            BufferedReader menuBR = new BufferedReader(reader);
+            FileInputStream menuF = new FileInputStream("C:\\DB\\Menu.txt");
+            InputStreamReader menu_reader = new InputStreamReader(menuF, "UTF-8");
+            BufferedReader menuBR = new BufferedReader(menu_reader);
 
             String resturant;
             String menu;
+            String temp = "";
             Directory town = new Directory("A동");
             Directory type_of_foodK = new Directory("한식");
             town.add(type_of_foodK);
+            
             while ((resturant = in.readLine()) != null) {
                 String resturant_arr[] = resturant.split("/");
-                while ((menu = menuBR.readLine()) != null) {
-                    String menu_arr[] = menu.split("/");
-                    if (resturant_arr[2].equals("A동") && resturant_arr[4].equals("한식")) {
-                        Directory restaurant_name = new Directory(resturant_arr[1]);
-                        type_of_foodK.add(restaurant_name);
-                        if(resturant_arr[1].equals(menu_arr[0])){
-                            Directory menu_name = new Directory(menu_arr[2]);
-                            restaurant_name.add(menu_name);
+                
+                if (resturant_arr[2].equals("A동") && resturant_arr[4].equals("한식")) {
+                    Directory restaurant_name = new Directory(resturant_arr[1]);
+                    type_of_foodK.add(restaurant_name);
+                    
+                    while ((menu = menuBR.readLine()) != null) {
+                        String menu_arr[] = menu.split("/");
+                        
+                        if (resturant_arr[1].equals(menu_arr[0])) {
+                            temp += (menu_arr[2] + "/");
                         }
+                        
                     }
+                    Directory menu_name = new Directory(temp);
+                    restaurant_name.add(menu_name);
+                    
                 }
+                
             }
-            town.printList();
-
-            in.close();
+             town.printList();
+             
+             in.close();
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

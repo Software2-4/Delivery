@@ -6,6 +6,7 @@
 package deu.cse.software2_4.Restaurant_Info;
 
 import deu.cse.software2_4.Purchase.Purchase;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,10 +16,16 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
     /**
      * Creates new form korean_restaurant_info
      */
+    
+    ArrayList menu_info = new ArrayList();
+    
     public Korean_restaurant_info() {
         initComponents();
         setSize(420, 600);
         setLocationRelativeTo(null);
+    }
+    public void getMenuInfo(String info){
+        menu_info.add(info);
     }
     
 
