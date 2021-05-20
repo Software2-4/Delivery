@@ -7,7 +7,7 @@ package deu.cse.software2_4.UserLogin;
 
 import deu.cse.software2_4.Restaurant_Info.Chienese_restaurant_info;
 import deu.cse.software2_4.Restaurant_Info.Japanese_restaurant_info;
-import deu.cse.software2_4.Restaurant_Info.Korean_restaurant_info;
+import deu.cse.software2_4.Resturant_list.Korean_restaurant_info;
 import deu.cse.software2_4.Restaurant_Info.Western_restaurant_info;
 
 

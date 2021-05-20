@@ -46,4 +46,9 @@ public class Directory extends Entry {
             entry.printList(prefix + "/" + name);
         }
     }
+    
+    @Override
+    protected ArrayList<Entry> getList() {
+        return this.directory;
+    }
 }

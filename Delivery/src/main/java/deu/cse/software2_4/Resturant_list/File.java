@@ -5,6 +5,8 @@
  */
 package deu.cse.software2_4.Resturant_list;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author YOU
@@ -31,5 +33,10 @@ public class File extends Entry {
     @Override
     protected void printList(String prefix) {
         System.out.println(prefix + "/" + this);
+    }
+
+    @Override
+    protected ArrayList<Entry> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -5,6 +5,8 @@
  */
 package deu.cse.software2_4.Resturant_list;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author YOU
@@ -23,6 +25,7 @@ public abstract class Entry {
     }
 
     protected abstract void printList(String prefix);
+    protected abstract ArrayList<Entry> getList();
 
     public String toString() {
         return getName() ;
