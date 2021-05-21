@@ -5,15 +5,19 @@
  */
 package deu.cse.software2_4.SignUp;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,8 +84,12 @@ public class Sign extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 211, 30));
 
-        name.setActionCommand("<Not Set>");
         name.setName(""); // NOI18N
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
         getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 178, -1));
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 178, -1));
         getContentPane().add(residentnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 178, -1));
@@ -129,6 +137,12 @@ public class Sign extends javax.swing.JFrame {
             }
         });
         getContentPane().add(oner, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
+
+        pwcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwcheckActionPerformed(evt);
+            }
+        });
         getContentPane().add(pwcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 180, -1));
 
         jButton3.setText("중복확인");
@@ -156,11 +170,50 @@ public class Sign extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String userinfo;
+        String[] userArr;
+        boolean userCheck = true;
+        FileInputStream input;
+
+        if (id.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요");
+        } else {
+            try {
+
+                input = new FileInputStream("C:\\Users\\tlatl\\Desktop\\Delivery2\\Delivery\\DB\\User.txt");
+                InputStreamReader reader = new InputStreamReader(input, "UTF-8");
+                BufferedReader in = new BufferedReader(reader);
+
+                while ((userinfo = in.readLine()) != null) {
+                    userArr = userinfo.split("/");
+                    if ((id.getText()).equals(userArr[4])) {
+                        userCheck = false;
+                    }
+                }
+
+                if (userCheck == false) {
+                    JOptionPane.showMessageDialog(null, "아이디가 이미 존재합니다.");
+                    id.setText(null);
+                } else {
+                    JOptionPane.showMessageDialog(null, "사용가능한 아이디 입니다.");
+                    id.setEnabled(false);
+                }
+                in.close();
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(onernum.getText().isEmpty()){
+        if (onernum.getText().isEmpty()) {
             onernum.setText("null");
         }
         Builder userBuilder = new UserBuilder(name.getText(), id.getText(), pw.getText(), residentnum.getText(), phone.getText(), address.getText(), onernum.getText());
@@ -169,24 +222,24 @@ public class Sign extends javax.swing.JFrame {
 
         User user1 = director.getUser();
         System.out.println(user1);
-        
+
         FileOutputStream output;
         try {
-            
-            output = new FileOutputStream("C:\\DB\\User.txt", true);
+
+            output = new FileOutputStream("C:\\Users\\tlatl\\Desktop\\Delivery2\\Delivery\\DB\\User.txt", true);
             OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
             BufferedWriter out = new BufferedWriter(writer);
-            
-            out.write(user1.toString());
+
+            out.write(user1.toString() + "\n");
             out.close();
-            
+            dispose();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -208,6 +261,19 @@ public class Sign extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameActionPerformed
+
+    private void pwcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwcheckActionPerformed
+        // TODO add your handling code here:
+        if(pwcheck.equals(pw) != true){
+             JOptionPane.showMessageDialog(null, "패스워드가 틀렸습니다. 다시 입력해 주세요.");
+             pw.setText(null);
+             pwcheck.setText(null);
+        }
+    }//GEN-LAST:event_pwcheckActionPerformed
 
     /**
      * @param args the command line arguments

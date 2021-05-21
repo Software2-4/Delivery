@@ -6,7 +6,16 @@
 package deu.cse.software2_4.UserLogin;
 
 import deu.cse.software2_4.SignUp.Sign;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,13 +24,13 @@ import javax.swing.ButtonGroup;
 public class LoginGUI extends javax.swing.JFrame {
 
     ButtonGroup user_option = new ButtonGroup();
-    
+
     /**
      * Creates new form Login
      */
     public LoginGUI() {
         initComponents();
-        
+
         setSize(420, 600);
         setLocationRelativeTo(null);
         user_option.add(customer);
@@ -38,9 +47,9 @@ public class LoginGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField_ID = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
         jLabel_ID = new javax.swing.JLabel();
-        jPasswordField_PW = new javax.swing.JPasswordField();
+        pw = new javax.swing.JPasswordField();
         jLabel_PW = new javax.swing.JLabel();
         jButton_login = new javax.swing.JButton();
         jButton_register = new javax.swing.JButton();
@@ -56,11 +65,11 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTextField_ID.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        jTextField_ID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTextField_ID.addActionListener(new java.awt.event.ActionListener() {
+        id.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
+        id.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_IDActionPerformed(evt);
+                idActionPerformed(evt);
             }
         });
 
@@ -68,12 +77,12 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel_ID.setText("ID : ");
         jLabel_ID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPasswordField_PW.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        jPasswordField_PW.setToolTipText("");
-        jPasswordField_PW.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPasswordField_PW.addActionListener(new java.awt.event.ActionListener() {
+        pw.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
+        pw.setToolTipText("");
+        pw.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField_PWActionPerformed(evt);
+                pwActionPerformed(evt);
             }
         });
 
@@ -158,12 +167,12 @@ public class LoginGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel_PW)
                                     .addGap(18, 18, 18)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPasswordField_PW, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pw, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPasswordField_PW, jTextField_ID});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {id, pw});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel_ID, jLabel_PW});
 
@@ -177,11 +186,11 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_ID)
-                    .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_PW)
-                    .addComponent(jPasswordField_PW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customer)
@@ -200,35 +209,84 @@ public class LoginGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField_PWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_PWActionPerformed
+    private void pwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwActionPerformed
         // TODO add your handling code here: 
-    }//GEN-LAST:event_jPasswordField_PWActionPerformed
+    }//GEN-LAST:event_pwActionPerformed
 
-    private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_IDActionPerformed
+    }//GEN-LAST:event_idActionPerformed
 
     private void jButton_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_loginMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_loginMouseClicked
 
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
+        FileInputStream input;
+        String userinfo;
+        String[] userArr;
+        boolean userCheck = true;
+        boolean userposition = false;
 
-        Login test = new Login();
-        
-        if(oner.isSelected()){
-            
-            test.setLogin_strategy(new Business_Login());
-            test.loginscreen();
-            
-        }else{
+        if (id.getText().equals("") || (pw.getText()).equals("")) {
+            JOptionPane.showMessageDialog(null, "아이디 또는 패스워드를 입력해 주세요");
+        } else {
+            try {
 
-            test.setLogin_strategy(new Consumer_Login());
-            test.loginscreen();
-            
+                input = new FileInputStream("C:\\Users\\tlatl\\Desktop\\Delivery2\\Delivery\\DB\\User.txt");
+                InputStreamReader reader = new InputStreamReader(input, "UTF-8");
+                BufferedReader in = new BufferedReader(reader);
+
+                while ((userinfo = in.readLine()) != null) {
+                    System.out.println(userinfo);
+                    userArr = userinfo.split("/");
+                    if ((id.getText()).equals(userArr[4]) && (pw.getText()).equals(userArr[5])) {
+                        userCheck = false;
+                        if(userArr[6].equals("null")){
+                            userposition = true;
+                        }
+                    }
+                }
+
+                Login test = new Login();
+                if (userCheck==false) {
+                    if (oner.isSelected() && userposition == false) {
+
+                        JOptionPane.showMessageDialog(null, "사업자 화면으로 이동합니다.");
+                        test.setLogin_strategy(new Business_Login());
+                        test.loginscreen();
+                        id.setText(null);
+                        pw.setText(null);
+
+                    } else if (customer.isSelected() && userposition == true){
+
+                        JOptionPane.showMessageDialog(null, "고객 화면으로 이동합니다.");
+                        test.setLogin_strategy(new Consumer_Login());
+                        test.loginscreen();
+                        id.setText(null);
+                        pw.setText(null);
+
+                    }else{
+                        JOptionPane.showMessageDialog(null, "고객과 사업자 선택을 확인해 주세요");
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "아이디, 패스워드 인증을 실패했습니다.");
+                    id.setText(null);
+                    pw.setText(null);
+                }
+                in.close();
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
-        
+
     }//GEN-LAST:event_jButton_loginActionPerformed
 
     private void jButton_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_exitActionPerformed
@@ -243,12 +301,12 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void customerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_customerActionPerformed
 
     private void onerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onerActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_onerActionPerformed
 
     /**
@@ -287,15 +345,15 @@ public class LoginGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton customer;
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton_exit;
     private javax.swing.JButton jButton_login;
     private javax.swing.JButton jButton_register;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_ID;
     private javax.swing.JLabel jLabel_PW;
-    private javax.swing.JPasswordField jPasswordField_PW;
-    private javax.swing.JTextField jTextField_ID;
     private javax.swing.JRadioButton oner;
+    private javax.swing.JPasswordField pw;
     // End of variables declaration//GEN-END:variables
 
 }
