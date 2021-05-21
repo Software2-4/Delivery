@@ -15,7 +15,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 /**
@@ -23,14 +24,20 @@ import javax.swing.ListSelectionModel;
  * @author KMS
  */
 public class Korean_restaurant_info extends javax.swing.JFrame {
+
     /**
      * Creates new form korean_restaurant_info
      */
-    
-
-    
-    
-
+    public Korean_restaurant_info() {
+        initComponents();
+        setSize(420, 600);
+        setLocationRelativeTo(null);
+//        this.entryList = getMenuInfo();String[] directory = {"A", "BC"};
+        String[] directory = {"A", "BC"};
+        JList strList = new JList(directory);
+        jScrollPane2.add(new JScrollPane(strList));
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,26 +122,23 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(menu_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(267, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(select_menu_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(price_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(total_price_KR))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(add_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(delete_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                            .addComponent(restaurant_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                            .addComponent(jScrollPane4)
-                            .addComponent(order, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(menu_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(select_menu_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(price_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(total_price_KR))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(add_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(delete_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(restaurant_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane4)
+                        .addComponent(order, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 265, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,9 +148,9 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
                     .addComponent(jButton_Back))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(restaurant_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addComponent(menu_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,13 +175,13 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-    dispose();
+        dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
-    setVisible(false);
-    Purchase object = new Purchase();
-    object.setVisible(true);
+        setVisible(false);
+        Purchase object = new Purchase();
+        object.setVisible(true);
     }//GEN-LAST:event_orderActionPerformed
 
     /**
@@ -236,16 +240,9 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
     private javax.swing.JTextField total_price_KR;
     // End of variables declaration//GEN-END:variables
     ArrayList<Entry> entryList;
-    
-    public Korean_restaurant_info() {
-        initComponents();
-        setSize(420, 600);
-        setLocationRelativeTo(null);
-//        this.entryList = getMenuInfo();
-        setLayout();
-    }
-    
-    public ArrayList<Entry> getMenuInfo(){
+
+
+    public ArrayList<Entry> getMenuInfo() {
         try {
             FileInputStream input = new FileInputStream("C:\\DB\\Resturant.txt");
             InputStreamReader reader = new InputStreamReader(input, "UTF-8");
@@ -258,37 +255,37 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
             String resturant;
             String menu;
             String temp = "";
-            
+
             Entry town = new Directory("A동");
             town.add(town);
             Directory type_of_foodK = new Directory("한식");
             town.add(type_of_foodK);
-            
+
             while ((resturant = in.readLine()) != null) {
                 String resturant_arr[] = resturant.split("/");
-                
+
                 if (resturant_arr[2].equals("A동") && resturant_arr[4].equals("한식")) {
                     Directory restaurant_name = new Directory(resturant_arr[1]);
                     type_of_foodK.add(restaurant_name);
-                    
+
                     while ((menu = menuBR.readLine()) != null) {
                         String menu_arr[] = menu.split("/");
-                        
+
                         if (resturant_arr[1].equals(menu_arr[0])) {
                             temp += (menu_arr[2] + "/");
                         }
-                        
+
                     }
                     Directory menu_name = new Directory(temp);
                     restaurant_name.add(menu_name);
-                    
+
                 }
-                
+
             }
-             town.printList();
-             
-             in.close();
-             return town.getList();
+            town.printList();
+
+            in.close();
+            return town.getList();
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -299,14 +296,14 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         }
         return null;
     }
-    
+
     private void setLayout() {
 //        String [] directory = entryList.stream().map(x-> x.getName()).toArray(String [] :: new );
-       String[] directory = {"A", "BC"};
-        menu_list_KR= new javax.swing.JList<String>(directory);
+        String[] directory = {"A", "BC"};
+        JList strList = new JList(directory);
         menu_list_KR.setSelectedIndex(0);
         menu_list_KR.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.add(menu_list_KR);
+        jScrollPane2.add(strList);
     }
 
 }
