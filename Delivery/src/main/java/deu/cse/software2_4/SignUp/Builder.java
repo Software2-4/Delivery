@@ -13,22 +13,24 @@ public abstract class Builder {
     protected User user;
     
     public void createUser() {
-        user = new User();
+        
     }
 
-    public abstract void buildName();
+    public abstract Builder buildName(String name);
 
-    public abstract void buildID();
+    public abstract Builder buildID(String id);
 
-    public abstract void buildPW();
+    public abstract Builder buildPW(String pw);
 
-    public abstract void buildPhone();
+    public abstract Builder buildPhone(String phone);
 
-    public abstract void buildResidentnum();
+    public abstract Builder buildResidentnum(String residentnum);
 
-    public abstract void buildAddress();
+    public abstract Builder buildAddress(String address);
 
-    public abstract void buildOnernum();
+    public abstract Builder buildOnernum(String onernum);
 
     public abstract User getUser();
+    
+    public abstract User build();
 }

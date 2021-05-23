@@ -19,33 +19,23 @@ public class User {
     private String address;
     private String onernum;
     
-
-    public void setName(String name) {
+    User(String name, String id, String pw, String residentnum, String phone, String address, String onernum) {
         this.name = name;
-    }
-
-    public void setID(String id) {
         this.id = id;
-    }
-
-    public void setPW(String pw) {
         this.pw = pw;
-    }
-
-    public void setResidentnum(String residentnum) {
         this.residentnum = residentnum;
-    }
-
-    public void setPhone(String phone) {
         this.phone = phone;
-    }
-    
-    public void setAddress(String address) {
         this.address = address;
-    }
-    
-    public void setOnernum(String onernum) {
         this.onernum = onernum;
+    }
+    User(String name, String id, String pw, String residentnum, String phone, String address) {
+        this.name = name;
+        this.id = id;
+        this.pw = pw;
+        this.residentnum = residentnum;
+        this.phone = phone;
+        this.address = address;
+        this.onernum = "";
     }
     @Override
     public String toString() {

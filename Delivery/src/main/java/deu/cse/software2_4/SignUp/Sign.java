@@ -213,15 +213,30 @@ public class Sign extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (onernum.getText().isEmpty()) {
-            onernum.setText("null");
+        User user;
+        if(oner.isSelected()){
+            
+        user = new UserBuilder(EnumUserRole.OWNER)
+                                    .buildAddress(address.getText())
+                                    .buildID(id.getText())
+                                    .buildName(name.getText())
+                                    .buildPW(pw.getText())
+                                    .buildPhone(phone.getText())
+                                    .buildOnernum(onernum.getText())
+                                    .buildResidentnum(residentnum.getText())
+                                    .build();
+        }else{
+            user = new UserBuilder(EnumUserRole.USER)
+                                    .buildAddress(address.getText())
+                                    .buildID(id.getText())
+                                    .buildName(name.getText())
+                                    .buildPW(pw.getText())
+                                    .buildPhone(phone.getText())
+                                    .buildResidentnum(residentnum.getText())
+                                    .build();
         }
-        Builder userBuilder = new UserBuilder(name.getText(), id.getText(), pw.getText(), residentnum.getText(), phone.getText(), address.getText(), onernum.getText());
-        Director director = new Director(userBuilder);
-        director.build();
 
-        User user1 = director.getUser();
-        System.out.println(user1);
+        System.out.println(user);
 
         FileOutputStream output;
         try {
@@ -230,7 +245,10 @@ public class Sign extends javax.swing.JFrame {
             OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
             BufferedWriter out = new BufferedWriter(writer);
 
-            out.write(user1.toString() + "\n");
+            out.write(user.toString() + "\n");
+            
+            JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
+            
             out.close();
             dispose();
         } catch (FileNotFoundException ex) {
