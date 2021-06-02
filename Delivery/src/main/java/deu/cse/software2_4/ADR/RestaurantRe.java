@@ -123,10 +123,6 @@ public class RestaurantRe extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        NewsPublisher newsPublisher = new NewsPublisher(); 
-        NewsSubscriber newsSubscriber1 = new NewsSubscriber(RestaurantName.getText(), newsPublisher); 
-        
-        newsPublisher.setNews(RestaurantPhone.getText(), RestaurantTime.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

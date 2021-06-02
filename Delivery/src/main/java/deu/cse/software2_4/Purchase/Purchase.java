@@ -5,15 +5,27 @@
  */
 package deu.cse.software2_4.Purchase;
 
-import deu.cse.software2_4.UserLogin.UserloginModel;
+import deu.cse.software2_4.Order.Korean_restaurant_info;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author KMS
  */
 public class Purchase extends javax.swing.JFrame {
-    
+        String order_info;
+        ArrayList<String> orderlist = new ArrayList<>();
+        
         ButtonGroup purchase_option = new ButtonGroup();
         String option;
     /**
@@ -24,8 +36,15 @@ public class Purchase extends javax.swing.JFrame {
         setSize(420, 600);
         setLocationRelativeTo(null);
 
-        purchase_option.add(cash_purchase);
-        purchase_option.add(card_purchase);
+        
+        try {
+            ShowOrder();
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }
 
@@ -41,7 +60,7 @@ public class Purchase extends javax.swing.JFrame {
         payment = new javax.swing.JLabel();
         order_check = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        order_check_list = new javax.swing.JList<>();
+        order_list = new javax.swing.JList<>();
         price_payment = new javax.swing.JLabel();
         total_price_payment = new javax.swing.JTextField();
         payment_last = new javax.swing.JButton();
@@ -57,7 +76,7 @@ public class Purchase extends javax.swing.JFrame {
         order_check.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
         order_check.setText("주문확인");
 
-        jScrollPane1.setViewportView(order_check_list);
+        jScrollPane1.setViewportView(order_list);
 
         price_payment.setFont(new java.awt.Font("굴림", 1, 14)); // NOI18N
         price_payment.setText("결제가격 : ");
@@ -149,13 +168,6 @@ public class Purchase extends javax.swing.JFrame {
 
     private void payment_lastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payment_lastActionPerformed
         // TODO add your handling code here:
-        if(cash_purchase.isSelected()){
-            option = "1";
-        }else{
-            option = "0";
-        }
-        Payment proxy = new Purchase_Proxy();
-        proxy.pay(Integer.parseInt(total_price_payment.getText()), option);
     }//GEN-LAST:event_payment_lastActionPerformed
 
     private void cash_purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cash_purchaseActionPerformed
@@ -196,6 +208,35 @@ public class Purchase extends javax.swing.JFrame {
             }
         });
     }
+        
+    public void ShowOrder() throws FileNotFoundException, UnsupportedEncodingException, IOException{
+        
+        FileInputStream input;
+        String[] order_arry;
+        String[] menuorder_arry;
+        
+        order_list.setModel(new DefaultListModel());
+        DefaultListModel model = (DefaultListModel) order_list.getModel();
+        
+        
+        input = new FileInputStream("/Users/gyueop/Documents/문서 - JeongGyuEop의 MacBook Pro/GIT/Delivery/Delivery/DB/Order.txt");
+        InputStreamReader reader = new InputStreamReader(input, "UTF-8");
+        BufferedReader in = new BufferedReader(reader);
+        
+        order_info=in.readLine();
+        order_arry = order_info.split("/");
+        menuorder_arry = order_arry[0].split(",");
+        for(int n = 0; n < menuorder_arry.length; n++){
+            orderlist.add(menuorder_arry[n]);
+        }
+        for(int j=0; j<orderlist.size(); j++){
+                model.addElement(orderlist.get(j));
+        }
+        
+         
+        
+    
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton card_purchase;
@@ -203,10 +244,11 @@ public class Purchase extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Back;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel order_check;
-    private javax.swing.JList<String> order_check_list;
+    private javax.swing.JList<String> order_list;
     private javax.swing.JLabel payment;
     private javax.swing.JButton payment_last;
     private javax.swing.JLabel price_payment;
     private javax.swing.JTextField total_price_payment;
     // End of variables declaration//GEN-END:variables
 }
+        

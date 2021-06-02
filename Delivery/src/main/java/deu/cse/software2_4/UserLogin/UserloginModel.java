@@ -5,10 +5,10 @@
  */
 package deu.cse.software2_4.UserLogin;
 
-import deu.cse.software2_4.Restaurant_Info.Chienese_restaurant_info;
-import deu.cse.software2_4.Restaurant_Info.Japanese_restaurant_info;
-import deu.cse.software2_4.Resturant_list.Korean_restaurant_info;
-import deu.cse.software2_4.Restaurant_Info.Western_restaurant_info;
+import deu.cse.software2_4.Order.Chienese_restaurant_info;
+import deu.cse.software2_4.Order.Japanese_restaurant_info;
+import deu.cse.software2_4.Order.Korean_restaurant_info;
+import deu.cse.software2_4.Order.Western_restaurant_info;
 
 
 /**

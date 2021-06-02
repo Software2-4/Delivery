@@ -17,8 +17,6 @@ public class Login {
     private Login_strategy login_strategy;
     boolean is_businessnum_null;
     
-    //ID, PW등을 DB에서 가져온다
-    //ID, PW등을 가져온 후 사용자가 입력한 정보와 일치하는지 출력한다.
     
     public void setLogin_strategy(Login_strategy login_strategy){
         

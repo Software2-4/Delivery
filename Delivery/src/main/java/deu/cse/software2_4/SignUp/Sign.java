@@ -241,7 +241,7 @@ public class Sign extends javax.swing.JFrame {
         FileOutputStream output;
         try {
 
-            output = new FileOutputStream("C:\\Users\\tlatl\\Desktop\\Delivery2\\Delivery\\DB\\User.txt", true);
+            output = new FileOutputStream("/Users/gyueop/Documents/문서 - JeongGyuEop의 MacBook Pro/GIT/Delivery/Delivery/DB/User.txt", true);
             OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
             BufferedWriter out = new BufferedWriter(writer);
 
