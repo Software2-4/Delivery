@@ -35,7 +35,6 @@ public class UserloginModel extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox_address = new javax.swing.JComboBox<>();
         jButton_Korean = new javax.swing.JButton();
         jButton_Chienese = new javax.swing.JButton();
         jButton_Western = new javax.swing.JButton();
@@ -47,9 +46,6 @@ public class UserloginModel extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
         jLabel1.setText("메뉴/주소 선택");
         jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        jComboBox_address.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        jComboBox_address.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A동", "B동", "C동", "D동" }));
 
         jButton_Korean.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jButton_Korean.setText("한식");
@@ -111,10 +107,6 @@ public class UserloginModel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_Back))
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jComboBox_address, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -122,9 +114,7 @@ public class UserloginModel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addComponent(jComboBox_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(120, 120, 120)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton_Korean, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Chienese, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -207,7 +197,6 @@ public class UserloginModel extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Japanese;
     private javax.swing.JButton jButton_Korean;
     private javax.swing.JButton jButton_Western;
-    private javax.swing.JComboBox<String> jComboBox_address;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

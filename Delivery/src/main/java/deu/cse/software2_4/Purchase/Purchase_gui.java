@@ -180,13 +180,13 @@ public class Purchase_gui extends javax.swing.JFrame {
         User u1 = new User();
         
         if(cash_purchase.isSelected()){
-            
             u1.setMeasurement(new Cash_Payment());
+            dispose();
         }
         
         else{
-            
             u1.setMeasurement(new Card_Payment());
+            dispose();
         }
         
         JOptionPane.showMessageDialog(null, u1.doPurchase(total_price_payment.getText()));
@@ -246,7 +246,7 @@ public class Purchase_gui extends javax.swing.JFrame {
         DefaultListModel model = (DefaultListModel) order_list.getModel();
         
         
-        input = new FileInputStream("/Users/gyueop/Documents/문서 - JeongGyuEop의 MacBook Pro/GIT/Delivery/Delivery/DB/Order.txt");
+        input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt");
         InputStreamReader reader = new InputStreamReader(input, "UTF-8");
         BufferedReader in = new BufferedReader(reader);
         
@@ -260,7 +260,7 @@ public class Purchase_gui extends javax.swing.JFrame {
                 model.addElement(orderlist.get(j));
         }
         
-         
+        total_price_payment.setText(order_arry[1]);
         
     
         }

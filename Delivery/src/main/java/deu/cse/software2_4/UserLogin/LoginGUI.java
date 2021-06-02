@@ -233,7 +233,7 @@ public class LoginGUI extends javax.swing.JFrame {
         } else {
             try {
 
-                input = new FileInputStream("C:\\Users\\tlatl\\Desktop\\Delivery2\\Delivery\\DB\\User.txt");
+                input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/User.txt");
                 InputStreamReader reader = new InputStreamReader(input, "UTF-8");
                 BufferedReader in = new BufferedReader(reader);
 

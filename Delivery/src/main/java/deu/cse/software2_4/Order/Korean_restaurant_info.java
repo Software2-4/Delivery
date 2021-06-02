@@ -256,7 +256,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         
         FileOutputStream output;
         try {
-            output = new FileOutputStream("/Users/gyueop/Documents/문서 - JeongGyuEop의 MacBook Pro/GIT/Delivery/Delivery/DB/Order.txt", true);
+            output = new FileOutputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt", true);
             OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
             BufferedWriter out = new BufferedWriter(writer);
             
@@ -290,7 +290,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         int m = -1;
         
         try {
-            input = new FileInputStream("/Users/gyueop/Documents/문서 - JeongGyuEop의 MacBook Pro/GIT/Delivery/Delivery/DB/menu.txt");
+            input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Menu.txt");
             InputStreamReader menu_reader = new InputStreamReader(input, "UTF-8");
             BufferedReader menu_in = new BufferedReader(menu_reader);
             
@@ -415,7 +415,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         DefaultListModel model = (DefaultListModel) restaurant_list.getModel();
         
         
-        input = new FileInputStream("/Users/gyueop/Documents/문서 - JeongGyuEop의 MacBook Pro/GIT/Delivery/Delivery/DB/Restaurant.txt");
+        input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Restaurant.txt");
         InputStreamReader reader = new InputStreamReader(input, "UTF-8");
         BufferedReader in = new BufferedReader(reader);
         
