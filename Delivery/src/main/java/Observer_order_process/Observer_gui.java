@@ -5,8 +5,9 @@
  */
 package Observer_order_process;
 
-import java.util.List;
-import javax.swing.ListSelectionModel;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 
 /**
  *
@@ -14,17 +15,29 @@ import javax.swing.ListSelectionModel;
  */
 public class Observer_gui extends javax.swing.JFrame {
 
+    
+    ArrayList<String> paycompletelist = new ArrayList<>();
+    ArrayList<String> deliverynotlist = new ArrayList<>();
+    
+    DefaultListModel model = new DefaultListModel();
+    DefaultListModel notmodel = new DefaultListModel();
     /**
      * Creates new form Observer_gui
      */
     public Observer_gui() {
         initComponents();
-        jList_deliver_not_finish.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        jList_delivery_finish.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        jList_observer_list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//        delivery_not_finish.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//        delivery_finish.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//        paycomplete_list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        paycomplete_list.setModel(model);
+        paycompletelist.add("손님 1");
+        paycompletelist.add("손님 2");
+        
+        model.addElement(paycompletelist.get(0));
+        model.addElement(paycompletelist.get(1));
 
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,30 +48,30 @@ public class Observer_gui extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList_observer_list = new javax.swing.JList<>();
+        paycomplete_list = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList_deliver_not_finish = new javax.swing.JList<>();
+        delivery_not_finish = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList_delivery_finish = new javax.swing.JList<>();
+        delivery_finish = new javax.swing.JList<>();
         jButton_start_delivery = new javax.swing.JButton();
         jButton_finish_delivery = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList_observer_list.setModel(new javax.swing.AbstractListModel<String>() {
+        paycomplete_list.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "손님1", "손님2" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList_observer_list.addMouseListener(new java.awt.event.MouseAdapter() {
+        paycomplete_list.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList_observer_listMouseClicked(evt);
+                paycomplete_listMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jList_observer_list);
+        jScrollPane1.setViewportView(paycomplete_list);
 
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 0, 18)); // NOI18N
         jLabel1.setText("결제완료주문");
@@ -69,19 +82,19 @@ public class Observer_gui extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("맑은 고딕", 0, 18)); // NOI18N
         jLabel4.setText("배달완료 주문");
 
-        jList_deliver_not_finish.setModel(new javax.swing.AbstractListModel<String>() {
+        delivery_not_finish.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList_deliver_not_finish);
+        jScrollPane2.setViewportView(delivery_not_finish);
 
-        jList_delivery_finish.setModel(new javax.swing.AbstractListModel<String>() {
+        delivery_finish.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList_delivery_finish);
+        jScrollPane3.setViewportView(delivery_finish);
 
         jButton_start_delivery.setText("배달시작");
         jButton_start_delivery.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,6 +109,11 @@ public class Observer_gui extends javax.swing.JFrame {
         });
 
         jButton_finish_delivery.setText("배달완료");
+        jButton_finish_delivery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_finish_deliveryActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,20 +166,24 @@ public class Observer_gui extends javax.swing.JFrame {
 
     private void jButton_start_deliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_start_deliveryActionPerformed
         // TODO add your handling code here:
-      
+        delivery_not_finish.setModel(notmodel);
+        notmodel.addElement(paycomplete_list.getSelectedValue());
         
+        model.remove(paycomplete_list.getSelectedIndex());
     }//GEN-LAST:event_jButton_start_deliveryActionPerformed
 
-    private void jList_observer_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList_observer_listMouseClicked
+    private void paycomplete_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paycomplete_listMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jList_observer_listMouseClicked
+    }//GEN-LAST:event_paycomplete_listMouseClicked
 
     private void jButton_start_deliveryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_start_deliveryMouseClicked
         // TODO add your handling code here:
-          System.out.println(jList_observer_list.getSelectedValuesList());
-        List<String> sel = jList_observer_list.getSelectedValuesList();
-//        jList_deliver_not_finish.
     }//GEN-LAST:event_jButton_start_deliveryMouseClicked
+
+    private void jButton_finish_deliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_finish_deliveryActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton_finish_deliveryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,16 +221,16 @@ public class Observer_gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> delivery_finish;
+    private javax.swing.JList<String> delivery_not_finish;
     private javax.swing.JButton jButton_finish_delivery;
     private javax.swing.JButton jButton_start_delivery;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList_deliver_not_finish;
-    private javax.swing.JList<String> jList_delivery_finish;
-    private javax.swing.JList<String> jList_observer_list;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JList<String> paycomplete_list;
     // End of variables declaration//GEN-END:variables
 }
