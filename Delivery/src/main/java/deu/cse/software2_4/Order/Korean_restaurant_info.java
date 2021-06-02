@@ -5,7 +5,7 @@
  */
 package deu.cse.software2_4.Order;
 
-import deu.cse.software2_4.Purchase.Purchase;
+import deu.cse.software2_4.Purchase.Purchase_gui;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -273,7 +273,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
 
         
         setVisible(false);
-        Purchase object = new Purchase();
+        Purchase_gui object = new Purchase_gui();
         object.setVisible(true);
     }//GEN-LAST:event_orderActionPerformed
 

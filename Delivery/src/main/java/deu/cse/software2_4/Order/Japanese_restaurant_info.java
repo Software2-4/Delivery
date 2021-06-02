@@ -5,7 +5,7 @@
  */
 package deu.cse.software2_4.Order;
 
-import deu.cse.software2_4.Purchase.Purchase;
+import deu.cse.software2_4.Purchase.Purchase_gui;
 import deu.cse.software2_4.UserLogin.UserloginModel;
 
 /**
@@ -163,7 +163,7 @@ public class Japanese_restaurant_info extends javax.swing.JFrame {
 
     private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
     setVisible(false);
-    Purchase object = new Purchase();
+    Purchase_gui object = new Purchase_gui();
     object.setVisible(true);
     }//GEN-LAST:event_orderActionPerformed
 
