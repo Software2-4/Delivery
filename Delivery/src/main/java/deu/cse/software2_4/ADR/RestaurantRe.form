@@ -30,34 +30,26 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="RestaurantPhone" max="32767" attributes="0"/>
-                              <Component id="RestaurantTime" pref="185" max="32767" attributes="0"/>
-                          </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jButton1" min="-2" pref="243" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField1" max="32767" attributes="0"/>
-                              <Component id="RestaurantName" pref="185" max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="RestaurantPhone" pref="236" max="32767" attributes="0"/>
+                          <Component id="RestaurantName" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jButton3" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" pref="243" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="boss_num" min="-2" pref="185" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jButton3" min="-2" pref="295" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="115" max="32767" attributes="0"/>
+              <EmptySpace pref="108" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,27 +59,22 @@
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="boss_num" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="RestaurantName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="47" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="RestaurantPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="RestaurantName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="RestaurantTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="RestaurantPhone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
@@ -108,21 +95,17 @@
         <Property name="text" type="java.lang.String" value="&#xac00;&#xac8c; &#xbc88;&#xd638;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc601;&#xc5c5; &#xc2dc;&#xac04;"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="RestaurantPhone">
-    </Component>
-    <Component class="javax.swing.JTextField" name="RestaurantTime">
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xb4a4;&#xb85c;&#xac00;&#xae30;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="boss_num">
     </Component>
     <Component class="javax.swing.JTextField" name="RestaurantName">
     </Component>
@@ -140,6 +123,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc778;&#xc99d;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -245,14 +245,10 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         if((request.getText()).equals("비어있음")){
             neworder = new NoOptionOrder(list, price);
             
-            
         }else{
             neworder = new OptionOrder(list, price);
             neworder.request(request.getText());
         }
-        
-  
-            
         
         FileOutputStream output;
         try {
