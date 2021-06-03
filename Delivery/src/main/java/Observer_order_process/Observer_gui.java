@@ -26,9 +26,6 @@ public class Observer_gui extends javax.swing.JFrame {
      */
     public Observer_gui() {
         initComponents();
-//        delivery_not_finish.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//        delivery_finish.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//        paycomplete_list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         paycomplete_list.setModel(model);
         paycompletelist.add("손님 1");

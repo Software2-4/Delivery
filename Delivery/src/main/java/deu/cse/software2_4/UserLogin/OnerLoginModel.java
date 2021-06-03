@@ -5,6 +5,8 @@
  */
 package deu.cse.software2_4.UserLogin;
 
+import deu.cse.software2_4.ADR.Restaurantadd;
+
 /**
  *
  * @author tlatl
@@ -89,6 +91,9 @@ public class OnerLoginModel extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        Restaurantadd object = new Restaurantadd();
+        object.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

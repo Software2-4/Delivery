@@ -24,7 +24,8 @@ import javax.swing.JOptionPane;
 public class LoginGUI extends javax.swing.JFrame {
 
     ButtonGroup user_option = new ButtonGroup();
-
+    Login bossnum = new Login();
+    
     /**
      * Creates new form Login
      */
@@ -242,8 +243,10 @@ public class LoginGUI extends javax.swing.JFrame {
                     userArr = userinfo.split("/");
                     if ((id.getText()).equals(userArr[4]) && (pw.getText()).equals(userArr[5])) {
                         userCheck = false;
-                        if(userArr[6].equals("null")){
+                        if(userArr[6].equals("")){
                             userposition = true;
+                        }else{
+                            bossnum.setBossnum(userArr[6]);
                         }
                     }
                 }
@@ -257,15 +260,16 @@ public class LoginGUI extends javax.swing.JFrame {
                         test.loginscreen();
                         id.setText(null);
                         pw.setText(null);
-
                     } else if (customer.isSelected() && userposition == true){
 
                         JOptionPane.showMessageDialog(null, "고객 화면으로 이동합니다.");
+                        
                         test.setLogin_strategy(new Consumer_Login());
                         test.loginscreen();
+                        
                         id.setText(null);
                         pw.setText(null);
-
+                        
                     }else{
                         JOptionPane.showMessageDialog(null, "고객과 사업자 선택을 확인해 주세요");
                     }

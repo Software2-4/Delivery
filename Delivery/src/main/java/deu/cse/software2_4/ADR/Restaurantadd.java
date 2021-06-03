@@ -5,10 +5,14 @@
  */
 package deu.cse.software2_4.ADR;
 
+import deu.cse.software2_4.UserLogin.Login;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
@@ -21,11 +25,15 @@ import javax.swing.JOptionPane;
  */
 public class Restaurantadd extends javax.swing.JFrame {
 
+    boolean bossnumcheck = false;
+
     /**
      * Creates new form Restaurantadd
      */
     public Restaurantadd() {
         initComponents();
+        setSize(420, 600);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -39,16 +47,15 @@ public class Restaurantadd extends javax.swing.JFrame {
 
         boss_num = new javax.swing.JTextField();
         restaurant_name = new javax.swing.JTextField();
-        restaurant_addr = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         restaurant_phone = new javax.swing.JTextField();
         food_type = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,9 +71,6 @@ public class Restaurantadd extends javax.swing.JFrame {
         jLabel2.setText("가게 명");
         jLabel2.setToolTipText("");
 
-        jLabel3.setText("가게 주소");
-        jLabel3.setToolTipText("");
-
         jLabel4.setText("가게 번호");
         jLabel4.setToolTipText("");
 
@@ -80,39 +84,57 @@ public class Restaurantadd extends javax.swing.JFrame {
         });
 
         jButton2.setText("사업자 인증");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("뒤로가기");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(boss_num, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(restaurant_name)
+                                    .addComponent(restaurant_phone)
+                                    .addComponent(food_type))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(boss_num, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                            .addComponent(restaurant_name)
-                            .addComponent(restaurant_addr)
-                            .addComponent(restaurant_phone)
-                            .addComponent(food_type))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addComponent(jButton2)
+                        .addGap(0, 5, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addContainerGap()
+                .addComponent(jButton3)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boss_num, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -123,10 +145,6 @@ public class Restaurantadd extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(restaurant_addr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(restaurant_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -135,7 +153,7 @@ public class Restaurantadd extends javax.swing.JFrame {
                     .addComponent(food_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,18 +165,51 @@ public class Restaurantadd extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            FileOutputStream output;
+        FileOutputStream output;
+        if (bossnumcheck) {
+            try {
 
+                output = new FileOutputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Restaurant.txt", true);
+                OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
+                BufferedWriter out = new BufferedWriter(writer);
+
+                JOptionPane.showMessageDialog(null, "식당이 정상적으로 추가되었습니다.");
+                out.write(boss_num.getText() + "/" + restaurant_name.getText() + "/" + restaurant_phone.getText() + "/" + food_type.getText() + "\n");
+
+                out.close();
+                dispose();
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Restaurantadd.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Restaurantadd.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Restaurantadd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "사업자번호 인증이 완료되지 않았습니다.");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        FileInputStream input;
+        String bossnum;
+        String[] bossnum_arry;
+        boolean bossInRestaurant = false;
         try {
-            output = new FileOutputStream("/Users/gyueop/Documents/문서 - JeongGyuEop의 MacBook Pro/GIT/Delivery/Delivery/DB/Restaurant.txt", true);
-            OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
-            BufferedWriter out = new BufferedWriter(writer);
+            input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Restaurant.txt");
+            InputStreamReader reader = new InputStreamReader(input, "UTF-8");
+            BufferedReader in = new BufferedReader(reader);
             
-            out.write("" + "\n");
-            
-            
-            out.close();
-            dispose();
+            while((bossnum = in.readLine()) != null){
+                bossnum_arry = bossnum.split("/");
+                if(bossnum_arry[0].equals(boss_num.getText())){
+                    JOptionPane.showMessageDialog(null, "이 사업자 번호는 이미 식당이 존재합니다." + "\n" + "식당을 추가하실 수 없습니다.");
+                    bossInRestaurant = true;
+                }
+            }
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Restaurantadd.class.getName()).log(Level.SEVERE, null, ex);
@@ -168,7 +219,20 @@ public class Restaurantadd extends javax.swing.JFrame {
             Logger.getLogger(Restaurantadd.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Login userlogin = new Login();
+        if ((boss_num.getText()).equals(userlogin.getBossnum()) && bossInRestaurant == false) {
+            JOptionPane.showMessageDialog(null, "사업자번호 인증이 완료되었습니다.");
+            bossnumcheck = true;
+            boss_num.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "인증에 실패했습니다.");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,12 +274,11 @@ public class Restaurantadd extends javax.swing.JFrame {
     private javax.swing.JTextField food_type;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField restaurant_addr;
     private javax.swing.JTextField restaurant_name;
     private javax.swing.JTextField restaurant_phone;
     // End of variables declaration//GEN-END:variables

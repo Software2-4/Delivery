@@ -14,12 +14,13 @@ public class Login {
     
     String ID;
     String PW;
+    private static String bossnum;
     private Login_strategy login_strategy;
     boolean is_businessnum_null;
     
     
     public void setLogin_strategy(Login_strategy login_strategy){
-        
+       
         this.login_strategy = login_strategy;
     }
     
@@ -35,4 +36,11 @@ public class Login {
         
     }
     
+    public void setBossnum(String bossnum){
+        this.bossnum = bossnum;
+    }
+    
+    public String getBossnum(){
+        return bossnum;
+    }
 }
