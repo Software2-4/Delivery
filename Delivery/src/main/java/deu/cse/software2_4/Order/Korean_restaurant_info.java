@@ -5,6 +5,9 @@
  */
 package deu.cse.software2_4.Order;
 
+import deu.cse.software2_4.Order.NoOptionOrder;
+import deu.cse.software2_4.Order.OptionOrder;
+import deu.cse.software2_4.Order.Order;
 import deu.cse.software2_4.Purchase.Purchase_gui;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,6 +19,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,7 +82,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         jButton_Back = new javax.swing.JButton();
         price_KR1 = new javax.swing.JLabel();
         request = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButton_restaurant_choose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,10 +145,10 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
 
         request.setText("비어있음");
 
-        jButton1.setText("선택");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_restaurant_choose.setText("선택");
+        jButton_restaurant_choose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_restaurant_chooseActionPerformed(evt);
             }
         });
 
@@ -174,18 +178,15 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
                             .addComponent(jScrollPane4)
                             .addComponent(order, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(select_menu_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(restaurant_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                            .addComponent(select_menu_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(restaurant_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(price_KR1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(request, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton_restaurant_choose)
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +198,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
                 .addComponent(restaurant_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton_restaurant_choose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menu_KR, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,10 +246,14 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         if((request.getText()).equals("비어있음")){
             neworder = new NoOptionOrder(list, price);
             
+            
         }else{
             neworder = new OptionOrder(list, price);
             neworder.request(request.getText());
         }
+        
+  
+            
         
         FileOutputStream output;
         try {
@@ -273,54 +278,50 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         object.setVisible(true);
     }//GEN-LAST:event_orderActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        String menu_info;
-        ArrayList<String> menulist = new ArrayList<>();
-        menu_list.setModel(new DefaultListModel());
-        DefaultListModel menu_model = (DefaultListModel) menu_list.getModel();
-        
-        FileInputStream input;
-        String[] menu_arry;
-        int m = -1;
-        
-        try {
-            input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Menu.txt");
-            InputStreamReader menu_reader = new InputStreamReader(input, "UTF-8");
-            BufferedReader menu_in = new BufferedReader(menu_reader);
+    private void jButton_restaurant_chooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_restaurant_chooseActionPerformed
+                                                          
+            // TODO add your handling code here:
             
-        while((menu_info=menu_in.readLine())!=null){
-            menu_arry = menu_info.split("/");
-            if(menu_arry[0].equals(restaurant_list.getSelectedValue())){
-                menulist.add(menu_arry[1]+"/"+menu_arry[2]);
-                m++;
+            ArrayList<String> menulist = new ArrayList<>();
+            menu_list.setModel(new DefaultListModel());
+            DefaultListModel menu_model = (DefaultListModel) menu_list.getModel();
+            
+            int m = -1;
+            
+            try {
+                
+                Kfood_Menu kfood = new Kfood_Menu(restaurant_list.getSelectedValue());
+                              
+                Iterator lunchIterator = kfood.createIterator();
+                                                                                            
+                while (lunchIterator.hasNext()) {
+                    MenuItem menuItem = (MenuItem) lunchIterator.next();
+                    menulist.add(menuItem.getMenu() + "/" + menuItem.getPrice());
+                    m++;
+                }
+                                               
+                for(int n=0; n<m+1; n++){
+                    menu_model.addElement(menulist.get(n));
+                }
+                
+                menuadd_list.setModel(new DefaultListModel());
+                DefaultListModel menuadd_model = (DefaultListModel) menuadd_list.getModel();
+                
+                menuaddlist.clear();
+                menunum = 0;
+                menuadd_model.clear();
+                price = 0;
+                total_price.setText(Integer.toString(price));
+                
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        for(int n=0; n<m+1; n++){
-            menu_model.addElement(menulist.get(n));
-        }
-        
-        
-        menuadd_list.setModel(new DefaultListModel());
-        DefaultListModel menuadd_model = (DefaultListModel) menuadd_list.getModel();
-        
-        menuaddlist.clear();
-        menunum = 0;
-        menuadd_model.clear();
-        price = 0;
-        total_price.setText(Integer.toString(price));
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+            
+    }//GEN-LAST:event_jButton_restaurant_chooseActionPerformed
 
     private void add_KRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_KRActionPerformed
         // TODO add your handling code here:
@@ -391,6 +392,8 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -410,8 +413,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         restaurant_list.setModel(new DefaultListModel());
         DefaultListModel model = (DefaultListModel) restaurant_list.getModel();
         
-        
-        input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Restaurant.txt");
+        input = new FileInputStream("C:\\Users\\YOU\\Documents\\GitHub\\Delivery\\Delivery\\DB\\Restaurant.txt");
         InputStreamReader reader = new InputStreamReader(input, "UTF-8");
         BufferedReader in = new BufferedReader(reader);
         
@@ -422,11 +424,10 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
                 i++;
             }
         }
+        
         for(int j=0; j<i+1; j++){
                 model.addElement(restaurantlist.get(j));
         }
-        
-        
         
     }
 
@@ -434,8 +435,8 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
     private javax.swing.JLabel Korean;
     private javax.swing.JButton add_KR;
     private javax.swing.JButton delete_KR;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_Back;
+    private javax.swing.JButton jButton_restaurant_choose;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
