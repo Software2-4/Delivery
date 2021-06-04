@@ -243,13 +243,17 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         }
         
         Order neworder;
+        String recepient;
         if((request.getText()).equals("비어있음")){
             neworder = new NoOptionOrder(list, price);
-            
+            neworder.CompleteOrder();
+             recepient = neworder.getRecepient();
             
         }else{
             neworder = new OptionOrder(list, price);
             neworder.request(request.getText());
+            neworder.CompleteOrder();
+            recepient = neworder.getRecepient();
         }
         
   
@@ -261,7 +265,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
             OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
             BufferedWriter out = new BufferedWriter(writer);
             
-            out.write(neworder.returnOrder());
+            out.write(recepient);
             
             out.close();
         } catch (FileNotFoundException ex) {

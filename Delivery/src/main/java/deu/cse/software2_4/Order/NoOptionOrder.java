@@ -14,6 +14,7 @@ import java.util.List;
 public class NoOptionOrder extends Order {
     
     public NoOptionOrder(List<String> menus, int totalPrice) {
+        
     }
     @Override
     protected void request(String requestText){

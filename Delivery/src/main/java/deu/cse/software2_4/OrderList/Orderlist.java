@@ -5,13 +5,25 @@
  */
 package deu.cse.software2_4.OrderList;
 
+import deu.cse.software2_4.UserLogin.Login;
 import deu.cse.software2_4.UserLogin.UserloginModel;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 /**
  *
  * @author 이창희
  */
 public class Orderlist extends javax.swing.JFrame {
+
+    FileInputStream input;
+    Login login = new Login();
+    boolean checkpaystate = false;
+    String paystate;
 
     /**
      * Creates new form Orderlist
@@ -20,6 +32,15 @@ public class Orderlist extends javax.swing.JFrame {
         initComponents();
         setSize(420, 600);
         setLocationRelativeTo(null);
+//
+//        input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt");
+//        InputStreamReader reader = new InputStreamReader(input, "UTF-8");
+//        BufferedReader in = new BufferedReader(reader);
+//        
+//        if((paystate = in.readLine()) != null){
+//            
+//        }
+        
     }
 
     /**
@@ -126,7 +147,7 @@ public class Orderlist extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_priceActionPerformed
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-    dispose();      // TODO add your handling code here:
+        dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     /**

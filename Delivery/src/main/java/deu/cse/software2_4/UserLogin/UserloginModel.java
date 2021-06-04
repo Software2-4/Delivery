@@ -12,12 +12,12 @@ import deu.cse.software2_4.Order.Western_restaurant_info;
 import deu.cse.software2_4.OrderList.Orderlist;
 import deu.cse.software2_4.Purchase.Purchase_gui;
 
-
 /**
  *
  * @author 이창희
  */
 public class UserloginModel extends javax.swing.JFrame {
+
     /**
      * Creates new form UserloginModel
      */
@@ -118,30 +118,31 @@ public class UserloginModel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_ChieneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ChieneseActionPerformed
-    
-    Chienese_restaurant_info object = new Chienese_restaurant_info();
-    object.setVisible(true);
+
+        Chienese_restaurant_info object = new Chienese_restaurant_info();
+        object.setVisible(true);
     }//GEN-LAST:event_jButton_ChieneseActionPerformed
 
     private void jButton_KoreanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_KoreanActionPerformed
-    Korean_restaurant_info object = new Korean_restaurant_info();
-    object.setVisible(true);
+        
+        Korean_restaurant_info object = new Korean_restaurant_info();
+        object.setVisible(true);
     }//GEN-LAST:event_jButton_KoreanActionPerformed
 
     private void jButton_JapaneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_JapaneseActionPerformed
-    
-    Japanese_restaurant_info object = new Japanese_restaurant_info();
-    object.setVisible(true); 
+
+        Japanese_restaurant_info object = new Japanese_restaurant_info();
+        object.setVisible(true);
     }//GEN-LAST:event_jButton_JapaneseActionPerformed
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-    dispose();
+        dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     private void jButton_WesternActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_WesternActionPerformed
-    
-    Western_restaurant_info object = new Western_restaurant_info();
-    object.setVisible(true); 
+
+        Western_restaurant_info object = new Western_restaurant_info();
+        object.setVisible(true);
     }//GEN-LAST:event_jButton_WesternActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

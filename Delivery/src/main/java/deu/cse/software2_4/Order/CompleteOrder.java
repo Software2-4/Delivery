@@ -5,18 +5,21 @@
  */
 package deu.cse.software2_4.Order;
 
-import java.util.List;
-
 /**
  *
  * @author gyueop
  */
-public class OptionOrder extends Order {
-    
-    public OptionOrder(List<String> menus, int totalPrice) {
-    }
+public class CompleteOrder implements State{
+
     @Override
-    protected void request(String requestText){
-       this.requestText = requestText;
+    public void Before_Order(Order order) {
+        order.setMenuState(new BeforeOrder());
     }
+
+    @Override
+    public void Complete_Order(Order order) {
+        order.returnOrder();
+        
+    }
+    
 }
