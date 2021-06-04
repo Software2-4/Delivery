@@ -18,6 +18,8 @@ public class Orderlist extends javax.swing.JFrame {
      */
     public Orderlist() {
         initComponents();
+        setSize(420, 600);
+        setLocationRelativeTo(null);
     }
 
     /**

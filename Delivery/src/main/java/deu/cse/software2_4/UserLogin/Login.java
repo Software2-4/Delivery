@@ -15,6 +15,7 @@ public class Login {
     String ID;
     String PW;
     private static String bossnum;
+    private static String returnid;
     private Login_strategy login_strategy;
     boolean is_businessnum_null;
     
@@ -42,5 +43,12 @@ public class Login {
     
     public String getBossnum(){
         return bossnum;
+    }
+    
+    public void setReturnid(String returnid){
+        this.returnid = returnid;
+    }
+    public String getReturnid(){
+        return returnid;
     }
 }

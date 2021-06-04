@@ -10,6 +10,7 @@ import deu.cse.software2_4.Order.Japanese_restaurant_info;
 import deu.cse.software2_4.Order.Korean_restaurant_info;
 import deu.cse.software2_4.Order.Western_restaurant_info;
 import deu.cse.software2_4.OrderList.Orderlist;
+import deu.cse.software2_4.Purchase.Purchase_gui;
 
 
 /**
@@ -42,12 +43,15 @@ public class UserloginModel extends javax.swing.JFrame {
         jButton_Japanese = new javax.swing.JButton();
         jButton_Back = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
         jLabel1.setText("메뉴/주소 선택");
         jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jButton_Korean.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jButton_Korean.setText("한식");
@@ -56,6 +60,7 @@ public class UserloginModel extends javax.swing.JFrame {
                 jButton_KoreanActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton_Korean, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 146, 100, 64));
 
         jButton_Chienese.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jButton_Chienese.setText("중식");
@@ -64,6 +69,7 @@ public class UserloginModel extends javax.swing.JFrame {
                 jButton_ChieneseActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton_Chienese, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 146, 100, 64));
 
         jButton_Western.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jButton_Western.setText("양식");
@@ -72,6 +78,7 @@ public class UserloginModel extends javax.swing.JFrame {
                 jButton_WesternActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton_Western, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 264, 100, 66));
 
         jButton_Japanese.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jButton_Japanese.setText("일식");
@@ -80,6 +87,7 @@ public class UserloginModel extends javax.swing.JFrame {
                 jButton_JapaneseActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton_Japanese, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 264, 100, 66));
 
         jButton_Back.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jButton_Back.setText("뒤로 가기");
@@ -88,6 +96,7 @@ public class UserloginModel extends javax.swing.JFrame {
                 jButton_BackActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton_Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 6, -1, -1));
 
         jButton1.setText("주문 내역");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -95,53 +104,15 @@ public class UserloginModel extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 370, -1, 46));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_Korean, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton_Japanese, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                        .addGap(56, 56, 56)))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton_Western, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Chienese, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_Back)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton_Back)))
-                .addGap(111, 111, 111)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_Korean, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Chienese, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Japanese, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Western, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106))
-        );
+        jButton2.setText("결제");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,6 +149,12 @@ public class UserloginModel extends javax.swing.JFrame {
         Orderlist object = new Orderlist();
         object.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Purchase_gui purchasegui = new Purchase_gui();
+        purchasegui.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,6 +193,7 @@ public class UserloginModel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_Back;
     private javax.swing.JButton jButton_Chienese;
     private javax.swing.JButton jButton_Japanese;

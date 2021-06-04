@@ -243,7 +243,7 @@ public class LoginGUI extends javax.swing.JFrame {
                     userArr = userinfo.split("/");
                     if ((id.getText()).equals(userArr[4]) && (pw.getText()).equals(userArr[5])) {
                         userCheck = false;
-                        if(userArr[6].equals("")){
+                        if(userArr[6].equals("null")){
                             userposition = true;
                         }else{
                             login.setBossnum(userArr[6]);

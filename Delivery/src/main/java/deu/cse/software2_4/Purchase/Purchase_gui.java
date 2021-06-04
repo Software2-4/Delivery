@@ -6,11 +6,16 @@
 package deu.cse.software2_4.Purchase;
 
 import deu.cse.software2_4.Order.Korean_restaurant_info;
+import deu.cse.software2_4.SignUp.Sign;
+import deu.cse.software2_4.UserLogin.Login;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -24,13 +29,16 @@ import javax.swing.JOptionPane;
  * @author KMS
  */
 public class Purchase_gui extends javax.swing.JFrame {
-        String order_info;
-        ArrayList<String> orderlist = new ArrayList<>();
-        
-        ButtonGroup purchase_option = new ButtonGroup();
-        
-        
-        String option;
+
+    String order_info;
+    String changeOrder;
+    ArrayList<String> orderlist = new ArrayList<>();
+    ArrayList<String> orderfile = new ArrayList<>();
+    ButtonGroup purchase_option = new ButtonGroup();
+
+    Login checkid = new Login();
+    boolean checkpay = false;
+
     /**
      * Creates new form purchase
      */
@@ -40,7 +48,7 @@ public class Purchase_gui extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         purchase_option.add(card_purchase);
         purchase_option.add(cash_purchase);
-        
+
         try {
             ShowOrder();
         } catch (UnsupportedEncodingException ex) {
@@ -48,8 +56,7 @@ public class Purchase_gui extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
 
     /**
@@ -178,18 +185,66 @@ public class Purchase_gui extends javax.swing.JFrame {
     private void payment_lastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payment_lastActionPerformed
         // TODO add your handling code here:
         User u1 = new User();
-        
-        if(cash_purchase.isSelected()){
-            u1.setMeasurement(new Cash_Payment());
-            dispose();
+        String[] changePaylog;
+        String changepaystate = "";
+        changePaylog = changeOrder.split("/");
+
+        if (checkpay) {
+            JOptionPane.showMessageDialog(null, "이미 결제가 완료되었습니다.");
+        } else {
+            FileOutputStream output;
+            try {
+                output = new FileOutputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt", false);
+                OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
+                BufferedWriter out = new BufferedWriter(writer);
+
+                if (cash_purchase.isSelected()) {
+                    changePaylog[4] = "현금결제/";
+                    changePaylog[5] = "배달중";
+                    for (int i = 0; i < (changePaylog.length) - 2; i++) {
+                        changepaystate += changePaylog[i] + "/";
+                    }
+                    changepaystate += changePaylog[4];
+                    changepaystate += changePaylog[5];
+
+                    orderfile.add(changepaystate);
+                    for (int j = 0; j < orderfile.size(); j++) {
+                        out.write(orderfile.get(j) + "\n");
+                    }
+                    u1.setMeasurement(new Cash_Payment());
+                    dispose();
+                } else if (card_purchase.isSelected()) {
+                    changePaylog[4] = "카드결제/";
+                    changePaylog[5] = "배달중";
+                    for (int i = 0; i < (changePaylog.length) - 2; i++) {
+                        changepaystate += changePaylog[i] + "/";
+                    }
+                    changepaystate += changePaylog[4];
+                    changepaystate += changePaylog[5];
+
+                    orderfile.add(changepaystate);
+                    for (int j = 0; j < orderfile.size(); j++) {
+                        out.write(orderfile.get(j) + "\n");
+                    }
+                    u1.setMeasurement(new Card_Payment());
+                    dispose();
+                } else {
+
+                }
+
+                out.close();
+                dispose();
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(null, u1.doPurchase(total_price_payment.getText()));
         }
-        
-        else{
-            u1.setMeasurement(new Card_Payment());
-            dispose();
-        }
-        
-        JOptionPane.showMessageDialog(null, u1.doPurchase(total_price_payment.getText()));
     }//GEN-LAST:event_payment_lastActionPerformed
 
     private void card_purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card_purchaseActionPerformed
@@ -235,35 +290,43 @@ public class Purchase_gui extends javax.swing.JFrame {
             }
         });
     }
-        
-    public void ShowOrder() throws FileNotFoundException, UnsupportedEncodingException, IOException{
-        
+
+    public void ShowOrder() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+
         FileInputStream input;
-        String[] order_arry;
-        String[] menuorder_arry;
-        
+        String[] order_arry = null;
+        String[] menuorder_arry = null;
+
         order_list.setModel(new DefaultListModel());
         DefaultListModel model = (DefaultListModel) order_list.getModel();
-        
-        
+
         input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt");
         InputStreamReader reader = new InputStreamReader(input, "UTF-8");
         BufferedReader in = new BufferedReader(reader);
-        
-        order_info=in.readLine();
-        order_arry = order_info.split("/");
-        menuorder_arry = order_arry[0].split(",");
-        for(int n = 0; n < menuorder_arry.length; n++){
+
+        while ((order_info = in.readLine()) != null) {
+            order_arry = order_info.split("/");
+            if (order_arry[0].equals(checkid.getReturnid())) {
+                menuorder_arry = order_arry[1].split(",");
+                total_price_payment.setText(order_arry[2]);
+                changeOrder = order_info;
+                if (order_arry[4].equals("현금결제") || order_arry[4].equals("카드결제")) {
+                    checkpay = true;
+                } else {
+                    checkpay = false;
+                }
+            } else {
+                orderfile.add(order_info);
+            }
+        }
+        for (int n = 0; n < menuorder_arry.length; n++) {
             orderlist.add(menuorder_arry[n]);
         }
-        for(int j=0; j<orderlist.size(); j++){
-                model.addElement(orderlist.get(j));
+        for (int j = 0; j < orderlist.size(); j++) {
+            model.addElement(orderlist.get(j));
         }
-        
-        total_price_payment.setText(order_arry[1]);
-        
-    
-        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton card_purchase;
@@ -278,4 +341,3 @@ public class Purchase_gui extends javax.swing.JFrame {
     private javax.swing.JTextField total_price_payment;
     // End of variables declaration//GEN-END:variables
 }
-        
