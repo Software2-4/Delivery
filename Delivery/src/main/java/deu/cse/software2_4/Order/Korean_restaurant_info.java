@@ -413,7 +413,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         restaurant_list.setModel(new DefaultListModel());
         DefaultListModel model = (DefaultListModel) restaurant_list.getModel();
         
-        input = new FileInputStream("C:\\Users\\YOU\\Documents\\GitHub\\Delivery\\Delivery\\DB\\Restaurant.txt");
+        input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Restaurant.txt");
         InputStreamReader reader = new InputStreamReader(input, "UTF-8");
         BufferedReader in = new BufferedReader(reader);
         

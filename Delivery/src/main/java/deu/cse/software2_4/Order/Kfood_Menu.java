@@ -33,7 +33,7 @@ public class Kfood_Menu implements Menu {
             String[] restaurant_arry;
             String restaurant_info;
                         
-            input = new FileInputStream("C:\\Users\\YOU\\Documents\\GitHub\\Delivery\\Delivery\\DB\\Menu.txt");
+            input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Menu.txt");
             InputStreamReader reader = new InputStreamReader(input, "UTF-8");
             BufferedReader in = new BufferedReader(reader);
             
