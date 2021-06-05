@@ -213,52 +213,54 @@ public class Sign extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        User user;
-        if(oner.isSelected()){
-            
-        user = new UserBuilder(EnumUserRole.OWNER)
-                                    .buildAddress(address.getText())
-                                    .buildID(id.getText())
-                                    .buildName(name.getText())
-                                    .buildPW(pw.getText())
-                                    .buildPhone(phone.getText())
-                                    .buildOnernum(onernum.getText())
-                                    .buildResidentnum(residentnum.getText())
-                                    .build();
-        }else{
-            user = new UserBuilder(EnumUserRole.USER)
-                                    .buildAddress(address.getText())
-                                    .buildID(id.getText())
-                                    .buildName(name.getText())
-                                    .buildPW(pw.getText())
-                                    .buildPhone(phone.getText())
-                                    .buildResidentnum(residentnum.getText())
-                                    .build();
+        if (name.getText().isEmpty() || id.getText().isEmpty() || pw.getText().isEmpty() || pwcheck.getText().isEmpty()
+                || residentnum.getText().isEmpty() || phone.getText().isEmpty() || address.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "빈칸을 모두 채워주십시오.");
+        } else {
+            User user;
+            if (oner.isSelected()) {
+
+                user = new UserBuilder(EnumUserRole.OWNER)
+                        .buildAddress(address.getText())
+                        .buildID(id.getText())
+                        .buildName(name.getText())
+                        .buildPW(pw.getText())
+                        .buildPhone(phone.getText())
+                        .buildOnernum(onernum.getText())
+                        .buildResidentnum(residentnum.getText())
+                        .build();
+            } else {
+                user = new UserBuilder(EnumUserRole.USER)
+                        .buildAddress(address.getText())
+                        .buildID(id.getText())
+                        .buildName(name.getText())
+                        .buildPW(pw.getText())
+                        .buildPhone(phone.getText())
+                        .buildResidentnum(residentnum.getText())
+                        .build();
+            }
+
+            System.out.println(user);
+
+            FileOutputStream output;
+            try {
+
+                output = new FileOutputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/User.txt", true);
+                OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
+                BufferedWriter out = new BufferedWriter(writer);
+
+                out.write(user.toString() + "\n");
+                JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
+                out.close();
+                dispose();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
-        System.out.println(user);
-
-        FileOutputStream output;
-        try {
-
-            output = new FileOutputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/User.txt", true);
-            OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
-            BufferedWriter out = new BufferedWriter(writer);
-
-            out.write(user.toString() + "\n");
-            
-            JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
-            
-            out.close();
-            dispose();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
@@ -286,10 +288,10 @@ public class Sign extends javax.swing.JFrame {
 
     private void pwcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwcheckActionPerformed
         // TODO add your handling code here:
-        if(pwcheck.equals(pw) != true){
-             JOptionPane.showMessageDialog(null, "패스워드가 틀렸습니다. 다시 입력해 주세요.");
-             pw.setText(null);
-             pwcheck.setText(null);
+        if (pwcheck.equals(pw) != true) {
+            JOptionPane.showMessageDialog(null, "패스워드가 틀렸습니다. 다시 입력해 주세요.");
+            pw.setText(null);
+            pwcheck.setText(null);
         }
     }//GEN-LAST:event_pwcheckActionPerformed
 
