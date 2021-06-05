@@ -10,16 +10,16 @@ package deu.cse.software2_4.Order;
  * @author gyueop
  */
 public class BeforeOrder implements State{
-
+    String message;
     @Override
     public void Before_Order(Order order) {
-        
+        order.menustate();
     }
 
     @Override
     public void Complete_Order(Order order) {
-        order.setMenuState(new CompleteOrder());
-        order.returnOrder();
+        order.setMenuState(this);
+//        order.returnOrder();
     }
     
 }

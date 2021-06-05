@@ -17,6 +17,7 @@ public abstract class Order {
     protected String requestText;
     private State state;
     private String recepient;
+    public String message; 
     
     public Order() {
         this.state = new BeforeOrder();
@@ -39,6 +40,8 @@ public abstract class Order {
     
     public  void setMenuState(State state) {
         this.state = state;
+        this.state = new CompleteOrder();
+        this.state.Complete_Order(this);
     }
     public boolean removeMenu() {
         if(checkOrder()) {
@@ -49,6 +52,7 @@ public abstract class Order {
     }
     public State getState() {
         return this.state;
+        
     }
     public void BeforeOrder() {
         state.Before_Order(this);
@@ -63,5 +67,9 @@ public abstract class Order {
     }
     public String getRecepient() {
         return this.recepient;
+    }
+    public String menustate(){
+        message = "메뉴가 선택되지 않았습니다";
+        return message;
     }
 }

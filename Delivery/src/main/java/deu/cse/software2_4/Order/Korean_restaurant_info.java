@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -243,41 +244,50 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         }
 
         Order neworder;
-        String recepient;
+        State nomenu;
+        String recepient = "";
         String tmp = "";
-        if ((request.getText()).equals("비어있음")) {
+        if (menuadd_list.getModel().getSize() == 0) {
             neworder = new NoOptionOrder(list, price);
             neworder.request("비어있음");
-            neworder.CompleteOrder();
-            recepient = neworder.getRecepient();
-
+            neworder.BeforeOrder();
+            JOptionPane.showMessageDialog(null, neworder.message);
         } else {
-            neworder = new OptionOrder(list, price);
-            neworder.request(request.getText());
-            neworder.CompleteOrder();
-            recepient = neworder.getRecepient();
+
+            if ((request.getText()).equals("비어있음")) {
+                neworder = new NoOptionOrder(list, price);
+                neworder.request("비어있음");
+                neworder.CompleteOrder();
+                recepient = neworder.getRecepient();
+
+            } else {
+                neworder = new OptionOrder(list, price);
+                neworder.request(request.getText());
+                neworder.CompleteOrder();
+                recepient = neworder.getRecepient();
+            }
+
+            Login login = new Login();
+            FileOutputStream output;
+            try {
+                output = new FileOutputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt", true);
+                OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
+                BufferedWriter out = new BufferedWriter(writer);
+
+                out.write(login.getReturnid() + "/" + recepient + "/미결제/" + "배달전" + "\n");
+
+                out.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Purchase_gui object = new Purchase_gui();
+            object.setVisible(true);
+            dispose();
         }
-        
-        Login login = new Login();
-        FileOutputStream output;
-        try {
-            output = new FileOutputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt", true);
-            OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
-            BufferedWriter out = new BufferedWriter(writer);
-            
-            out.write(login.getReturnid()+ "/" + recepient + "/미결제/" + "배달전" );
-            
-            out.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Purchase_gui object = new Purchase_gui();
-        object.setVisible(true);
-        dispose();
     }//GEN-LAST:event_orderActionPerformed
 
     private void jButton_restaurant_chooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_restaurant_chooseActionPerformed
