@@ -12,29 +12,33 @@ import java.util.List;
  * @author gyueop
  */
 public abstract class Order {
-    private List<String> menus;
-    private int totalPrice;
+    protected List<String> menus;
+    protected int totalPrice;
     protected String requestText;
     private State state;
     private String recepient;
     
     public Order() {
-        this.menus = menus;
-        this.totalPrice = totalPrice;
         this.state = new BeforeOrder();
     }
     
     protected abstract void request(String requestText);
     
-    public void returnOrder(){
- 
+//    public void setmenus(List<String> menus){
+//        this.menus = menus;
+//    }
+//    public void setTotalPrice(int totalPrice){
+//        this.totalPrice = totalPrice;
+//    }
+    
+    public String returnOrder(){
         recepient = menus + "/" + totalPrice + "/" + requestText;
-        
+        return recepient;
     }
        
     
     public  void setMenuState(State state) {
-        String menuType;
+        this.state = state;
     }
     public boolean removeMenu() {
         if(checkOrder()) {

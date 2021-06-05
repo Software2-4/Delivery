@@ -12,12 +12,14 @@ import java.util.List;
  * @author gyueop
  */
 public class NoOptionOrder extends Order {
-    
     public NoOptionOrder(List<String> menus, int totalPrice) {
-        
+        this.menus = menus;
+        this.totalPrice = totalPrice;
     }
     @Override
     protected void request(String requestText){
-        this.requestText = "요청사항의 내용이 비어있습니다.";
+        this.requestText = requestText;
     }
+
+    
 }

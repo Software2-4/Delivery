@@ -9,6 +9,7 @@ import deu.cse.software2_4.Order.NoOptionOrder;
 import deu.cse.software2_4.Order.OptionOrder;
 import deu.cse.software2_4.Order.Order;
 import deu.cse.software2_4.Purchase.Purchase_gui;
+import deu.cse.software2_4.UserLogin.Login;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -34,9 +35,9 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
     String restaurant_info;
     ArrayList<String> restaurantlist = new ArrayList<>();
     ArrayList<String> menuaddlist = new ArrayList<>();
-    int price=0;
+    int price = 0;
     int menunum = 0;
-    
+
     /**
      * Creates new form korean_restaurant_info
      */
@@ -51,9 +52,9 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -233,39 +234,38 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
-        String menuName;
+
         String[] menunameArry;
         List<String> list = new ArrayList<>();
-        int number = menuaddlist.size();
-        for(int i=0; i<number; i++){
+        for (int i = 0; i < menuaddlist.size(); i++) {
             menunameArry = (menuaddlist.get(i)).split("/");
-            list.add(menunameArry[0]+",");
+            list.add(menunameArry[0] + " ");
         }
-        
+
         Order neworder;
         String recepient;
-        if((request.getText()).equals("비어있음")){
+        String tmp = "";
+        if ((request.getText()).equals("비어있음")) {
             neworder = new NoOptionOrder(list, price);
+            neworder.request("비어있음");
             neworder.CompleteOrder();
-             recepient = neworder.getRecepient();
-            
-        }else{
+            recepient = neworder.getRecepient();
+
+        } else {
             neworder = new OptionOrder(list, price);
             neworder.request(request.getText());
             neworder.CompleteOrder();
             recepient = neworder.getRecepient();
         }
         
-  
-            
-        
+        Login login = new Login();
         FileOutputStream output;
         try {
             output = new FileOutputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt", true);
             OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
             BufferedWriter out = new BufferedWriter(writer);
             
-            out.write(recepient);
+            out.write(login.getReturnid()+ "/" + recepient + "/미결제/" + "배달전" );
             
             out.close();
         } catch (FileNotFoundException ex) {
@@ -275,56 +275,53 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        
-        setVisible(false);
         Purchase_gui object = new Purchase_gui();
         object.setVisible(true);
+        dispose();
     }//GEN-LAST:event_orderActionPerformed
 
     private void jButton_restaurant_chooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_restaurant_chooseActionPerformed
-                                                          
-            // TODO add your handling code here:
-            
-            ArrayList<String> menulist = new ArrayList<>();
-            menu_list.setModel(new DefaultListModel());
-            DefaultListModel menu_model = (DefaultListModel) menu_list.getModel();
-            
-            int m = -1;
-            
-            try {
-                
-                Kfood_Menu kfood = new Kfood_Menu(restaurant_list.getSelectedValue());
-                              
-                Iterator lunchIterator = kfood.createIterator();
-                                                                                            
-                while (lunchIterator.hasNext()) {
-                    MenuItem menuItem = (MenuItem) lunchIterator.next();
-                    menulist.add(menuItem.getMenu() + "/" + menuItem.getPrice());
-                    m++;
-                }
-                                               
-                for(int n=0; n<m+1; n++){
-                    menu_model.addElement(menulist.get(n));
-                }
-                
-                menuadd_list.setModel(new DefaultListModel());
-                DefaultListModel menuadd_model = (DefaultListModel) menuadd_list.getModel();
-                
-                menuaddlist.clear();
-                menunum = 0;
-                menuadd_model.clear();
-                price = 0;
-                total_price.setText(Integer.toString(price));
-                
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+
+        // TODO add your handling code here:
+        ArrayList<String> menulist = new ArrayList<>();
+        menu_list.setModel(new DefaultListModel());
+        DefaultListModel menu_model = (DefaultListModel) menu_list.getModel();
+
+        int m = -1;
+
+        try {
+
+            Kfood_Menu kfood = new Kfood_Menu(restaurant_list.getSelectedValue());
+
+            Iterator lunchIterator = kfood.createIterator();
+
+            while (lunchIterator.hasNext()) {
+                MenuItem menuItem = (MenuItem) lunchIterator.next();
+                menulist.add(menuItem.getMenu() + "/" + menuItem.getPrice());
+                m++;
             }
-            
+
+            for (int n = 0; n < m + 1; n++) {
+                menu_model.addElement(menulist.get(n));
+            }
+
+            menuadd_list.setModel(new DefaultListModel());
+            DefaultListModel menuadd_model = (DefaultListModel) menuadd_list.getModel();
+
+            menuaddlist.clear();
+            menunum = 0;
+            menuadd_model.clear();
+            price = 0;
+            total_price.setText(Integer.toString(price));
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButton_restaurant_chooseActionPerformed
 
     private void add_KRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_KRActionPerformed
@@ -333,22 +330,20 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         String[] menu_price = (menu_list.getSelectedValue()).split("/");
         int pricemenu = Integer.parseInt(menu_price[1]);
         price += pricemenu;
-        
+
         menuadd_list.setModel(new DefaultListModel());
         DefaultListModel menuadd_model = (DefaultListModel) menuadd_list.getModel();
-        
+
         menuaddlist.add(menu_list.getSelectedValue());
         menunum++;
-        
-        for(int n=0; n<menunum; n++){
+
+        for (int n = 0; n < menunum; n++) {
             menuadd_model.addElement(menuaddlist.get(n));
         }
-        
+
         total_price.setText(Integer.toString(price));
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_add_KRActionPerformed
 
     private void delete_KRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_KRActionPerformed
@@ -356,14 +351,14 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
         String[] delete_menu = (menuadd_list.getSelectedValue()).split("/");
         int delete_price = Integer.parseInt(delete_menu[1]);
         price = price - delete_price;
-        
+
         menuadd_list.setModel(new DefaultListModel());
         DefaultListModel menuadd_model = (DefaultListModel) menuadd_list.getModel();
-        
-        menuaddlist.remove(menu_list.getSelectedIndex()-1);
+
+        menuaddlist.remove(menu_list.getSelectedIndex() - 1);
         menunum--;
-        
-        for(int n=0; n<menunum; n++){
+
+        for (int n = 0; n < menunum; n++) {
             menuadd_model.addElement(menuaddlist.get(n));
         }
         total_price.setText(Integer.toString(price));
@@ -405,34 +400,34 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
                 new Korean_restaurant_info().setVisible(true);
             }
         });
-        
+
     }
-    
-    public void ShowRestaurant() throws FileNotFoundException, UnsupportedEncodingException, IOException{
-        
+
+    public void ShowRestaurant() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+
         FileInputStream input;
         String[] restaurant_arry;
         int i = -1;
-        
+
         restaurant_list.setModel(new DefaultListModel());
         DefaultListModel model = (DefaultListModel) restaurant_list.getModel();
-        
+
         input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Restaurant.txt");
         InputStreamReader reader = new InputStreamReader(input, "UTF-8");
         BufferedReader in = new BufferedReader(reader);
-        
-        while((restaurant_info=in.readLine()) != null){
+
+        while ((restaurant_info = in.readLine()) != null) {
             restaurant_arry = restaurant_info.split("/");
-            if(restaurant_arry[3].equals("한식")){
+            if (restaurant_arry[3].equals("한식")) {
                 restaurantlist.add(restaurant_arry[1]);
                 i++;
             }
         }
-        
-        for(int j=0; j<i+1; j++){
-                model.addElement(restaurantlist.get(j));
+
+        for (int j = 0; j < i + 1; j++) {
+            model.addElement(restaurantlist.get(j));
         }
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -457,6 +452,5 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
     private javax.swing.JLabel select_menu_KR;
     private javax.swing.JTextField total_price;
     // End of variables declaration//GEN-END:variables
-  
 
 }

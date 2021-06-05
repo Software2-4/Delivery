@@ -14,9 +14,15 @@ import java.util.List;
 public class OptionOrder extends Order {
     
     public OptionOrder(List<String> menus, int totalPrice) {
+        this.menus = menus;
+        this.totalPrice = totalPrice;
     }
     @Override
     protected void request(String requestText){
        this.requestText = requestText;
     }
+    
+    
+    
+    
 }

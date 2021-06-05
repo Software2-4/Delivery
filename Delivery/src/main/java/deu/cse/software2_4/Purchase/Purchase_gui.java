@@ -5,7 +5,6 @@
  */
 package deu.cse.software2_4.Purchase;
 
-import deu.cse.software2_4.Order.Korean_restaurant_info;
 import deu.cse.software2_4.SignUp.Sign;
 import deu.cse.software2_4.UserLogin.Login;
 import java.io.BufferedReader;
@@ -37,7 +36,7 @@ public class Purchase_gui extends javax.swing.JFrame {
     ButtonGroup purchase_option = new ButtonGroup();
 
     Login checkid = new Login();
-    boolean checkpay = false;
+    boolean checkpay;
 
     /**
      * Creates new form purchase
@@ -49,14 +48,7 @@ public class Purchase_gui extends javax.swing.JFrame {
         purchase_option.add(card_purchase);
         purchase_option.add(cash_purchase);
 
-        try {
-            ShowOrder();
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Korean_restaurant_info.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        ShowOrder();
     }
 
     /**
@@ -212,6 +204,7 @@ public class Purchase_gui extends javax.swing.JFrame {
                         out.write(orderfile.get(j) + "\n");
                     }
                     u1.setMeasurement(new Cash_Payment());
+                    out.close();
                     dispose();
                 } else if (card_purchase.isSelected()) {
                     changePaylog[4] = "카드결제/";
@@ -227,11 +220,13 @@ public class Purchase_gui extends javax.swing.JFrame {
                         out.write(orderfile.get(j) + "\n");
                     }
                     u1.setMeasurement(new Card_Payment());
+                    out.close();
                     dispose();
                 } else {
-
+                    JOptionPane.showMessageDialog(null, "결제방식을 선택하여 주세요");
                 }
 
+                JOptionPane.showMessageDialog(null, u1.doPurchase(total_price_payment.getText()));
                 out.close();
                 dispose();
 
@@ -243,7 +238,6 @@ public class Purchase_gui extends javax.swing.JFrame {
                 Logger.getLogger(Sign.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            JOptionPane.showMessageDialog(null, u1.doPurchase(total_price_payment.getText()));
         }
     }//GEN-LAST:event_payment_lastActionPerformed
 
@@ -291,39 +285,43 @@ public class Purchase_gui extends javax.swing.JFrame {
         });
     }
 
-    public void ShowOrder() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+    public void ShowOrder() {
 
         FileInputStream input;
         String[] order_arry = null;
-        String[] menuorder_arry = null;
 
         order_list.setModel(new DefaultListModel());
         DefaultListModel model = (DefaultListModel) order_list.getModel();
 
-        input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt");
-        InputStreamReader reader = new InputStreamReader(input, "UTF-8");
-        BufferedReader in = new BufferedReader(reader);
+        try {
+            input = new FileInputStream("/Users/gyueop/Documents/JeongGyuEop_Document/GIT/Delivery/Delivery/DB/Order.txt");
+            InputStreamReader reader = new InputStreamReader(input, "UTF-8");
+            BufferedReader in = new BufferedReader(reader);
 
-        while ((order_info = in.readLine()) != null) {
-            order_arry = order_info.split("/");
-            if (order_arry[0].equals(checkid.getReturnid())) {
-                menuorder_arry = order_arry[1].split(",");
-                total_price_payment.setText(order_arry[2]);
-                changeOrder = order_info;
-                if (order_arry[4].equals("현금결제") || order_arry[4].equals("카드결제")) {
-                    checkpay = true;
+            while ((order_info = in.readLine()) != null) {
+                order_arry = order_info.split("/");
+                if (order_arry[0].equals(checkid.getReturnid())) {
+                    total_price_payment.setText(order_arry[2]);
+                    changeOrder = order_info;
+                    if (order_arry[4].equals("현금결제") || order_arry[4].equals("카드결제")) {
+                        checkpay = true;
+                    } else {
+                        checkpay = false;
+                    }
                 } else {
-                    checkpay = false;
+                    orderfile.add(order_info);
                 }
-            } else {
-                orderfile.add(order_info);
             }
-        }
-        for (int n = 0; n < menuorder_arry.length; n++) {
-            orderlist.add(menuorder_arry[n]);
-        }
-        for (int j = 0; j < orderlist.size(); j++) {
-            model.addElement(orderlist.get(j));
+            orderlist.add(order_arry[1]);
+            model.addElement(orderlist);
+            in.close();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Purchase_gui.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Purchase_gui.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Purchase_gui.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

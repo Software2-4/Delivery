@@ -19,6 +19,7 @@ public class BeforeOrder implements State{
     @Override
     public void Complete_Order(Order order) {
         order.setMenuState(new CompleteOrder());
+        order.returnOrder();
     }
     
 }

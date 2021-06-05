@@ -43,7 +43,6 @@ public class UserloginModel extends javax.swing.JFrame {
         jButton_Japanese = new javax.swing.JButton();
         jButton_Back = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,14 +105,6 @@ public class UserloginModel extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 370, -1, 46));
 
-        jButton2.setText("결제");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,12 +141,6 @@ public class UserloginModel extends javax.swing.JFrame {
         Orderlist object = new Orderlist();
         object.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Purchase_gui purchasegui = new Purchase_gui();
-        purchasegui.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,7 +179,6 @@ public class UserloginModel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_Back;
     private javax.swing.JButton jButton_Chienese;
     private javax.swing.JButton jButton_Japanese;
