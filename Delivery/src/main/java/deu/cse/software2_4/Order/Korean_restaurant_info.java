@@ -259,7 +259,7 @@ public class Korean_restaurant_info extends javax.swing.JFrame {
                 neworder.request("비어있음");
                 neworder.CompleteOrder();
                 recepient = neworder.getRecepient();
-
+     
             } else {
                 neworder = new OptionOrder(list, price);
                 neworder.request(request.getText());
